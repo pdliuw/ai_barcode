@@ -1,0 +1,35 @@
+PODS:
+  - ai_barcode (0.0.1):
+    - Flutter
+    - MTBBarcodeScanner
+  - Flutter (1.0.0)
+  - MTBBarcodeScanner (5.0.11)
+  - "permission_handler (4.2.0+hotfix.1)":
+    - Flutter
+
+DEPENDENCIES:
+  - ai_barcode (from `.symlinks/plugins/ai_barcode/ios`)
+  - Flutter (from `Flutter`)
+  - permission_handler (from `.symlinks/plugins/permission_handler/ios`)
+
+SPEC REPOS:
+  trunk:
+    - MTBBarcodeScanner
+
+EXTERNAL SOURCES:
+  ai_barcode:
+    :path: ".symlinks/plugins/ai_barcode/ios"
+  Flutter:
+    :path: Flutter
+  permission_handler:
+    :path: ".symlinks/plugins/permission_handler/ios"
+
+SPEC CHECKSUMS:
+  ai_barcode: a415de3b4616800a963d265b292511f890a3649d
+  Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
+  MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
+  permission_handler: 59e1b9bd42a8fa96055ca59969723c07af837634
+
+PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
+
+COCOAPODS: 1.8.4
