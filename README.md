@@ -88,7 +88,7 @@ iOS权限配置:
 ```
 
     <key>NSCameraUsageDescription</key>
-	<string>Can we access your camera in order to scan barcodes?</string>
+    <string>Can we access your camera in order to scan barcodes?</string>
 
 
 ```
@@ -97,7 +97,7 @@ iOS支持PlatformView配置：
 
 ```
 	
-	<key>io.flutter.embedded_views_preview</key>
+    <key>io.flutter.embedded_views_preview</key>
     <true/>
     
 ```
