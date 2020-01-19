@@ -1,3 +1,7 @@
+## [0.2.9]
+
+* update 'analyzed suggestions'
+
 ## [0.2.8]
 
 * update 'example'

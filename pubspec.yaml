@@ -1,6 +1,6 @@
 name: ai_barcode
-description: Android and IOS recognize the &quot;one-dimensional bar code&quot; and &quot;two-dimensional bar code&quot;, and support the Scanner embedded in Flutter pages to meet changing business needs
-version: 0.2.8
+description: Android and IOS recognize the one-dimensional bar code and two-dimensional bar code, and support the Scanner embedded in Flutter pages
+version: 0.2.9
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
