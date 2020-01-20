@@ -1,3 +1,7 @@
+## [0.3.0]
+
+* update 'AndroidX Migration'
+
 ## [0.2.9]
 
 * update 'analyzed suggestions'
