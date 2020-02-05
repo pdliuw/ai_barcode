@@ -1,3 +1,7 @@
+## [0.3.1]
+
+* update 'License'
+
 ## [0.3.0]
 
 * update 'AndroidX Migration'

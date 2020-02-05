@@ -2,13 +2,22 @@
 
 ![totem](https://raw.githubusercontent.com/pdliuw/pdliuw.github.io/master/images/totem_four_logo.jpg)
 
+-----
+
+|[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
+|:-|:-|
+
 ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
 亮点: ``ai_barcode:支持在flutter页面中嵌入Scanner以此来应对多变的业务需求``
 
-|![效果](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|![效果](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|
+## Effect
+
+|iOS|Android|
+|:-|:-|
+|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
 |:-|:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
@@ -39,7 +48,7 @@ dependencies:
 ```
 dependencies:
 
-  # Scanner package.
+  # barcode package.
   ai_barcode:
     git:
       url: https://github.com/pdliuw/ai_barcode.git
@@ -189,21 +198,13 @@ iOS支持PlatformView配置：
 ## 待办
 
 * 支持：生成条码
+* 支持：iOS上成功扫描条形码后也可以冻结相机图像
 
 
 ## LICENSE
 
-   Copyright 2019 pdliuw
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+    BSD 3-Clause License
+    
+    Copyright (c) 2020, pdliuw
+    All rights reserved.
 
