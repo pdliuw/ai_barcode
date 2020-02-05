@@ -7,11 +7,11 @@
 |[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
 |:-|:-|
 
-ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别
+ai_barcode: Support Android and IOS recognition of 'one-dimensional barcode' and 'two-dimensional barcode'
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
-亮点: ``ai_barcode:支持在flutter页面中嵌入Scanner以此来应对多变的业务需求``
+Highlights: `` ai_barcode: Support Scanner embedded in flutter pages to meet changing business needs ''
 
 ## Effect
 
@@ -22,16 +22,16 @@ ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
-|[下载安卓apk安装包](https://github.com/pdliuw/Flutter_Resource/blob/master/resource/flutter/apk/flutter_scanner.apk?raw=true)|[IOS安装包，请下载example后运行项目获取]()|[博客地址](https://pdliuw.github.io/)|
+|[Download Android apk](https://github.com/pdliuw/Flutter_Resource/blob/master/resource/flutter/apk/flutter_scanner.apk?raw=true)|[IOS安装包，请下载example后运行项目获取]()|[博客地址](https://pdliuw.github.io/)|
 |:-|:-|:-|
 
-## 1.安装
+## 1.Installing
 
-使用当前包作为依赖库
+Use this package as a library
 
-### 1. 依赖此库
+### 1. Depend on it
 
-在文件 'pubspec.yaml' 中添加
+Add this to your package's pubspec.yaml file:
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
@@ -43,21 +43,24 @@ dependencies:
 
 ```
 
-或者以下方式依赖
+Or depending on
 
 ```
 dependencies:
 
-  # barcode package.
+  # barcode plugin.
   ai_barcode:
     git:
       url: https://github.com/pdliuw/ai_barcode.git
 
 ```
 
-### 2. 安装此库
+### 2. Install it
 
-你可以通过下面的命令行来安装此库
+You can install packages from the command line:
+
+with Flutter:
+
 
 ```
 
@@ -66,25 +69,26 @@ $ flutter pub get
 
 ```
 
-你也可以通过项目开发工具通过可视化操作来执行上述步骤
+Alternatively, your editor might support flutter pub get. Check the docs for your editor to learn more.
 
-### 3. 导入此库
+### 3. Import it
 
-现在，在你的Dart编辑代码中，你可以使用：
+Now in your Dart code, you can use:
 
 ```
 
 import 'package:ai_barcode/ai_barcode.dart';
 
+
 ```
 
-## 2.使用
+## 2.Usage
 
-使用'相机'需要动态申请权限，动态权限推荐：[permission_handler](https://github.com/Baseflow/flutter-permission-handler)
+The use of 'Camera' requires dynamic application permission, dynamic permission recommendation：[permission_handler](https://github.com/Baseflow/flutter-permission-handler)
 
-配置权限
+Configure permissions
 
-Android权限配置:
+Android permission configuration:
 
 ```
 
@@ -92,7 +96,7 @@ Android权限配置:
     
 ```
 
-iOS权限配置:
+iOS permission configuration:
 
 ```
 
@@ -102,7 +106,7 @@ iOS权限配置:
 
 ```
 
-iOS支持PlatformView配置：
+iOS supports PlatformView configuration:
 
 ```
 	
@@ -112,12 +116,15 @@ iOS支持PlatformView配置：
 ```
 
 
-### 1.使用'一维条码、二维条码'的地方中：
+### 1.Where '1D barcode, 2D barcode' is used:
 
-简要示例
+Brief example
 
 ```
-                //cameraWidth:相机的宽度;cameraHeight相机的高度,可根据实际的业务来动态调整
+                //cameraWidth: the width of the camera; 
+                //the height of the cameraHeight camera;
+                //which can be dynamically adjusted according to the actual business
+
                 Container(
                   color: Colors.black26,
                   width: cameraWidth,
@@ -129,21 +136,23 @@ iOS支持PlatformView配置：
 
 ```
 
-完整示例
+Complete example
 
-[完整示例,点击这里](https://github.com/pdliuw/ai_barcode/blob/master/example/lib/task_scanner_page.dart)
+[Full example, click here](https://github.com/pdliuw/ai_barcode/blob/master/example/lib/task_scanner_page.dart)
 
 
-### 2.调用/应用
+### 2.Call / apply
 
-*1、打开相机设备
+*1、Turn on the camera device
+
 
 ```
 
           _scannerController.startCamera();
 
 ```
-*2、打开预览/识别'条码'
+*2、Open Preview / Recognize 'Barcode'
+
 
 ```
 
@@ -151,7 +160,8 @@ iOS支持PlatformView配置：
 
 ```
 
-*3、关闭预览/识别'条码'
+*3、Close Preview / Recognize 'Barcode'
+
 
 ```
 
@@ -160,7 +170,8 @@ iOS支持PlatformView配置：
 ```
 
 
-*4、关闭相机设备
+*4、Turn off camera equipment
+
 
 ```
 
@@ -168,7 +179,8 @@ iOS支持PlatformView配置：
 
 ```
 
-*5、打开手电筒
+*5、Turn on the flashlight
+
 
 ```
 
@@ -176,7 +188,8 @@ iOS支持PlatformView配置：
 
 ```
 
-*5、关闭手电筒
+*5、Flashlight off
+
 
 ```
 
@@ -184,7 +197,8 @@ iOS支持PlatformView配置：
 
 ```
 
-*5、切换手电筒
+*5、Toggle flashlight
+
 
 ```
 
@@ -193,12 +207,13 @@ iOS支持PlatformView配置：
 ```
 
 
-看到这里还意犹未尽？[点击，查看项目示例](https://github.com/pdliuw/ai_barcode/tree/master/example/lib)
+Seeing it here is overwhelming？[Click to see project examples](https://github.com/pdliuw/ai_barcode/tree/master/example/lib)
 
-## 待办
+## TODO
 
-* 支持：生成条码
-* 支持：iOS上成功扫描条形码后也可以冻结相机图像
+* Support: Generate barcode
+
+* Support: Camera image can be frozen after successfully scanning barcode on iOS
 
 
 ## LICENSE
@@ -207,4 +222,5 @@ iOS支持PlatformView配置：
     
     Copyright (c) 2020, pdliuw
     All rights reserved.
+
 
