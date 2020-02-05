@@ -20,9 +20,9 @@ Highlights: `` ai_barcode: Support Scanner embedded in flutter pages to meet cha
 |![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
 |:-|:-|
 
-[ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
+[ai_barcode](https://github.com/pdliuw/ai_barcode) in[project](https://github.com/flutter-app-sample/flutter_app_sample) practical application [flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
-|[Download Android apk](https://github.com/pdliuw/Flutter_Resource/blob/master/resource/flutter/apk/flutter_scanner.apk?raw=true)|[IOS安装包，请下载example后运行项目获取]()|[博客地址](https://pdliuw.github.io/)|
+|[Download Android apk](https://github.com/pdliuw/Flutter_Resource/blob/master/resource/flutter/apk/flutter_scanner.apk?raw=true)|[ios ipa obtained by running the project]()|[Blog web site](https://pdliuw.github.io/)|
 |:-|:-|:-|
 
 ## 1.Installing
