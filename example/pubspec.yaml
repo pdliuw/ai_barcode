@@ -18,7 +18,8 @@ dev_dependencies:
     sdk: flutter
 
   # barcode plugin
-  ai_barcode: 0.3.0
+  ai_barcode:
+    path: ../
 
   # route package
   airoute: ^0.1.7

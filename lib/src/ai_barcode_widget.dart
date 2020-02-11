@@ -1,7 +1,9 @@
-part of ai_barcode;
+part of '../ai_barcode.dart';
 
 ///
 /// PlatformScannerWidget
+///
+/// Supported android and ios platform read barcode
 // ignore: must_be_immutable
 class PlatformAiBarcodeScannerWidget extends StatefulWidget {
   ///
@@ -12,7 +14,7 @@ class PlatformAiBarcodeScannerWidget extends StatefulWidget {
   /// Constructor.
   PlatformAiBarcodeScannerWidget(
       {@required ScannerController platformScannerController}) {
-    this._platformScannerController = platformScannerController;
+    _platformScannerController = platformScannerController;
   }
 
   @override
@@ -25,8 +27,7 @@ class PlatformAiBarcodeScannerWidget extends StatefulWidget {
 /// _PlatformScannerWidgetState
 class _PlatformScannerWidgetState
     extends State<PlatformAiBarcodeScannerWidget> {
-  ///
-  /// id
+  /// view id
   String _viewId = "view_type_id_scanner_view";
 
 //  StreamSubscription _streamSubscription;
@@ -34,17 +35,13 @@ class _PlatformScannerWidgetState
   @override
   void initState() {
     super.initState();
-    /*
-    Create
-     */
+    //Create
   }
 
   @override
   void dispose() {
-    /*
-    Release.
-     */
     super.dispose();
+    //Release
   }
 
   @override
@@ -52,6 +49,9 @@ class _PlatformScannerWidgetState
     return _cameraView();
   }
 
+  /// Barcode reader widget
+  ///
+  /// Support android and ios platform barcode reader
   Widget _cameraView() {
     TargetPlatform targetPlatform = Theme.of(context).platform;
 
@@ -91,8 +91,8 @@ class ScannerController {
 
   ///
   /// Result
-  Function _scannerResult;
-  Function _scannerViewCreated;
+  Function(String result) _scannerResult;
+  Function() _scannerViewCreated;
 
   bool _isStartCamera = false;
   bool _isStartCameraPreview = false;
@@ -104,33 +104,33 @@ class ScannerController {
     @required scannerResult(String result),
     scannerViewCreated(),
   }) {
-    this._scannerResult = scannerResult;
-    this._scannerViewCreated = scannerViewCreated;
+    _scannerResult = scannerResult;
+    _scannerViewCreated = scannerViewCreated;
   }
 
-  get scannerViewCreated => this._scannerViewCreated;
-  bool get isStartCamera => this._isStartCamera;
-  bool get isStartCameraPreview => this._isStartCameraPreview;
-  bool get isOpenFlash => this._isOpenFlash;
+  Function() get scannerViewCreated => _scannerViewCreated;
+  bool get isStartCamera => _isStartCamera;
+  bool get isStartCameraPreview => _isStartCameraPreview;
+  bool get isOpenFlash => _isOpenFlash;
 
   ///
   /// Start camera without open QRCode、BarCode scanner,this is just open camera.
   startCamera() async {
-    this._isStartCamera = true;
+    _isStartCamera = true;
     _methodChannel.invokeMethod("startCamera");
   }
 
   ///
   /// Stop camera.
   stopCamera() async {
-    this._isStartCamera = false;
+    _isStartCamera = false;
     _methodChannel.invokeMethod("stopCamera");
   }
 
   ///
   /// Start camera preview with open QRCode、BarCode scanner,this is open code scanner.
   startCameraPreview() async {
-    this._isStartCameraPreview = true;
+    _isStartCameraPreview = true;
     String code = await _methodChannel.invokeMethod("resumeCameraPreview");
     _scannerResult(code);
   }
@@ -138,21 +138,21 @@ class ScannerController {
   ///
   /// Stop camera preview.
   stopCameraPreview() async {
-    this._isStartCameraPreview = false;
+    _isStartCameraPreview = false;
     _methodChannel.invokeMethod("stopCameraPreview");
   }
 
   ///
   /// Open camera flash.
   openFlash() async {
-    this._isOpenFlash = true;
+    _isOpenFlash = true;
     _methodChannel.invokeMethod("openFlash");
   }
 
   ///
   /// Close camera flash.
   closeFlash() async {
-    this._isOpenFlash = false;
+    _isOpenFlash = false;
     _methodChannel.invokeMethod("closeFlash");
   }
 
@@ -160,7 +160,49 @@ class ScannerController {
   /// Toggle camera flash.
   toggleFlash() async {
     bool flash = isOpenFlash;
-    this._isOpenFlash = !flash;
+    _isOpenFlash = !flash;
     _methodChannel.invokeMethod("toggleFlash");
+  }
+}
+
+///
+/// PlatformAiBarcodeCreatorWidget
+///
+/// Supported android and ios write barcode
+class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return _PlatformAiBarcodeCreatorState();
+  }
+}
+
+///
+/// _PlatformAiBarcodeCreatorState
+class _PlatformAiBarcodeCreatorState
+    extends State<PlatformAiBarcodeCreatorWidget> {
+  /// View id
+  static const String _viewId = "";
+
+  @override
+  Widget build(BuildContext context) {
+    return _barcodeCreator();
+  }
+
+  /// Barcode creator widget
+  ///
+  /// Supported android and ios platform
+  Widget _barcodeCreator() {
+    TargetPlatform targetPlatform = Theme.of(context).platform;
+    if (targetPlatform == TargetPlatform.android) {
+      return AndroidView(
+        viewType: _viewId,
+      );
+    } else if (targetPlatform == TargetPlatform.iOS) {
+      return UiKitView(
+        viewType: _viewId,
+      );
+    } else {
+      return Text("Unsupported platform!");
+    }
   }
 }

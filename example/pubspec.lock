@@ -4,10 +4,10 @@ packages:
   ai_barcode:
     dependency: "direct dev"
     description:
-      name: ai_barcode
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.3.0"
+      path: ".."
+      relative: true
+    source: path
+    version: "0.3.1"
   airoute:
     dependency: "direct dev"
     description:
