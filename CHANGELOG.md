@@ -1,3 +1,7 @@
+## [0.3.2]
+
+* Effective Dart
+
 ## [0.3.1]
 
 * update 'License'
