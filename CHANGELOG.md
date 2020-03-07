@@ -1,3 +1,7 @@
+## [0.3.3]
+
+* Add: QRCode creator
+
 ## [0.3.2]
 
 * Effective Dart
