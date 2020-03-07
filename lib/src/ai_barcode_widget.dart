@@ -169,7 +169,17 @@ class ScannerController {
 /// PlatformAiBarcodeCreatorWidget
 ///
 /// Supported android and ios write barcode
+// ignore: must_be_immutable
 class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
+  CreatorController _creatorController;
+  String _initialValue;
+  PlatformAiBarcodeCreatorWidget({
+    @required CreatorController creatorController,
+    @required String initialValue,
+  }) {
+    _creatorController = creatorController;
+    _initialValue = initialValue;
+  }
   @override
   State<StatefulWidget> createState() {
     return _PlatformAiBarcodeCreatorState();
@@ -181,7 +191,7 @@ class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
 class _PlatformAiBarcodeCreatorState
     extends State<PlatformAiBarcodeCreatorWidget> {
   /// View id
-  static const String _viewId = "";
+  static const String _viewId = "view_type_id_creator_view";
 
   @override
   Widget build(BuildContext context) {
@@ -196,13 +206,58 @@ class _PlatformAiBarcodeCreatorState
     if (targetPlatform == TargetPlatform.android) {
       return AndroidView(
         viewType: _viewId,
+        creationParams: <String, dynamic>{
+          "qrCodeContent": widget._initialValue ?? 'please set QRCode value',
+        },
+        creationParamsCodec: StandardMessageCodec(),
+        onPlatformViewCreated: (int id) {
+          //created callback
+          if (widget._creatorController != null &&
+              widget._creatorController._creatorViewCreated != null) {
+            widget._creatorController._creatorViewCreated();
+          }
+          //initial value
+          if (widget._creatorController != null) {
+            widget._creatorController.updateValue(
+              value: widget._initialValue ?? 'please set QRCode value',
+            );
+          }
+        },
       );
     } else if (targetPlatform == TargetPlatform.iOS) {
       return UiKitView(
         viewType: _viewId,
+        creationParams: <String, dynamic>{
+          "qrCodeContent": widget._initialValue ?? 'please set QRCode value',
+        },
+        creationParamsCodec: StandardMessageCodec(),
+        onPlatformViewCreated: (int id) {},
       );
     } else {
       return Text("Unsupported platform!");
     }
+  }
+}
+
+///
+/// CreatorController
+class CreatorController {
+  static const MethodChannel _methodChannel =
+      MethodChannel("view_type_id_creator_view_method_channel");
+
+  Function() _creatorViewCreated;
+
+  CreatorController({
+    Function() creatorViewCreated,
+  }) {
+    _creatorViewCreated = creatorViewCreated;
+  }
+
+  void updateValue({
+    @required String value,
+  }) {
+    _methodChannel.invokeMethod("updateQRCodeValue", {
+      "qrCodeContent": value,
+    });
   }
 }

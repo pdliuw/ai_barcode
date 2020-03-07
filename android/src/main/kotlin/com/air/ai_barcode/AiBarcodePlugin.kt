@@ -18,6 +18,7 @@ public class AiBarcodePlugin: FlutterPlugin, MethodCallHandler {
         注册：自己定义PlatformView
          */
     flutterPluginBinding.platformViewRegistry.registerViewFactory("view_type_id_scanner_view",AndroidScannerViewFactory(flutterPluginBinding.binaryMessenger));
+    flutterPluginBinding.platformViewRegistry.registerViewFactory("view_type_id_creator_view",AndroidCreatorViewFactory(flutterPluginBinding.binaryMessenger));
   }
 
   // This static function is optional and equivalent to onAttachedToEngine. It supports the old
@@ -38,6 +39,7 @@ public class AiBarcodePlugin: FlutterPlugin, MethodCallHandler {
       注册：自己定义PlatformView
       */
       registrar.platformViewRegistry().registerViewFactory("view_type_id_scanner_view", AndroidScannerViewFactory(registrar.messenger()));
+      registrar.platformViewRegistry().registerViewFactory("view_type_id_creator_view", AndroidCreatorViewFactory(registrar.messenger()));
     }
   }
 

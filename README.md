@@ -7,7 +7,7 @@
 |[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
 |:-|:-|
 
-ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别
+ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别与生成
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
@@ -17,7 +17,12 @@ ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别
 
 |iOS|Android|
 |:-|:-|
-|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
+|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
+|:-|:-|
+
+|iOS|Android|
+|:-|:-|
+|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|
 |:-|:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
@@ -114,7 +119,7 @@ iOS支持PlatformView配置：
 
 ### 1.使用'一维条码、二维条码'的地方中：
 
-简要示例
+* 1、识别条码 简要示例
 
 ```
                 //cameraWidth:相机的宽度;cameraHeight相机的高度,可根据实际的业务来动态调整
@@ -128,6 +133,38 @@ iOS支持PlatformView配置：
                 ),
 
 ```
+
+* 2、生成/创建条码 简要示例
+
+```
+            Column(
+              children: <Widget>[
+                Text("生成的二维码：$_qrCodeOfInput"),
+                Container(
+                  width: 300,
+                  height: 300,
+                  decoration: ShapeDecoration(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                        color: Colors.blue,
+                        width: 15,
+                      ),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                    ),
+                  ),
+                  margin: EdgeInsets.all(40),
+                  child: PlatformAiBarcodeCreatorWidget(
+                    creatorController: _creatorController,
+                    initialValue: "$_qrCodeOfInput",
+                  ),
+                ),
+              ],
+            ),
+
+```
+
 
 完整示例
 
