@@ -9,6 +9,7 @@ public class SwiftAiBarcodePlugin: NSObject, FlutterPlugin {
      Register scanner
      */
     registrar.register(AiBarcodeScannerViewFactory(flutterBinaryMessenger: registrar.messenger()), withId: "view_type_id_scanner_view");
+    registrar.register(AiBarcodeCreatorViewFactory(flutterBinaryMessenger: registrar.messenger()), withId: "view_type_id_creator_view");
   }
 
   public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
