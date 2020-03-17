@@ -1,3 +1,7 @@
+## [0.3.4]
+
+* Add: adapter web
+
 ## [0.3.3]
 
 * Add: QRCode creator
