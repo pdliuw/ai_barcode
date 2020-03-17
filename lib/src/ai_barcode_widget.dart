@@ -27,68 +27,37 @@ class PlatformAiBarcodeScannerWidget extends StatefulWidget {
 /// _PlatformScannerWidgetState
 class _PlatformScannerWidgetState
     extends State<PlatformAiBarcodeScannerWidget> {
-  /// view id
-  String _viewId = "view_type_id_scanner_view";
-
 //  StreamSubscription _streamSubscription;
 
   @override
   void initState() {
     super.initState();
     //Create
+    AiBarcodePlatform.instance.addListener(_widgetCreatedListener);
+  }
+
+  ///
+  /// CreatedListener.
+  _widgetCreatedListener() {
+    widget._platformScannerController._scannerViewCreated();
   }
 
   @override
   void dispose() {
     super.dispose();
     //Release
+    AiBarcodePlatform.instance.removeListener(_widgetCreatedListener);
   }
 
   @override
   Widget build(BuildContext context) {
-    return _cameraView();
-  }
-
-  /// Barcode reader widget
-  ///
-  /// Support android and ios platform barcode reader
-  Widget _cameraView() {
-    TargetPlatform targetPlatform = Theme.of(context).platform;
-
-    if (targetPlatform == TargetPlatform.android) {
-      return AndroidView(
-        viewType: _viewId,
-        onPlatformViewCreated: (int id) {
-          widget._platformScannerController.scannerViewCreated();
-        },
-        creationParams: <String, dynamic>{},
-        creationParamsCodec: StandardMessageCodec(),
-      );
-    } else if (targetPlatform == TargetPlatform.iOS) {
-      return UiKitView(
-        viewType: _viewId,
-        onPlatformViewCreated: (int id) {
-          widget._platformScannerController.scannerViewCreated();
-        },
-        creationParams: <String, dynamic>{},
-        creationParamsCodec: StandardMessageCodec(),
-      );
-    } else {
-      return Text("不支持的平台");
-    }
+    return AiBarcodePlatform.instance.buildView(context);
   }
 }
 
 ///
 /// PlatformScannerController
 class ScannerController {
-  ///
-  /// Channel
-  MethodChannel _methodChannel =
-      MethodChannel("view_type_id_scanner_view_method_channel");
-//  EventChannel _eventChannel =
-//      EventChannel("view_type_id_scanner_view_event_channel");
-
   ///
   /// Result
   Function(String result) _scannerResult;
@@ -117,21 +86,22 @@ class ScannerController {
   /// Start camera without open QRCode、BarCode scanner,this is just open camera.
   startCamera() async {
     _isStartCamera = true;
-    _methodChannel.invokeMethod("startCamera");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("startCamera");
   }
 
   ///
   /// Stop camera.
   stopCamera() async {
     _isStartCamera = false;
-    _methodChannel.invokeMethod("stopCamera");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("stopCamera");
   }
 
   ///
   /// Start camera preview with open QRCode、BarCode scanner,this is open code scanner.
   startCameraPreview() async {
     _isStartCameraPreview = true;
-    String code = await _methodChannel.invokeMethod("resumeCameraPreview");
+    String code = await AiBarcodePlatform.methodChannelScanner
+        .invokeMethod("resumeCameraPreview");
     _scannerResult(code);
   }
 
@@ -139,21 +109,21 @@ class ScannerController {
   /// Stop camera preview.
   stopCameraPreview() async {
     _isStartCameraPreview = false;
-    _methodChannel.invokeMethod("stopCameraPreview");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("stopCameraPreview");
   }
 
   ///
   /// Open camera flash.
   openFlash() async {
     _isOpenFlash = true;
-    _methodChannel.invokeMethod("openFlash");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("openFlash");
   }
 
   ///
   /// Close camera flash.
   closeFlash() async {
     _isOpenFlash = false;
-    _methodChannel.invokeMethod("closeFlash");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("closeFlash");
   }
 
   ///
@@ -161,7 +131,7 @@ class ScannerController {
   toggleFlash() async {
     bool flash = isOpenFlash;
     _isOpenFlash = !flash;
-    _methodChannel.invokeMethod("toggleFlash");
+    AiBarcodePlatform.methodChannelScanner.invokeMethod("toggleFlash");
   }
 }
 
@@ -231,7 +201,19 @@ class _PlatformAiBarcodeCreatorState
           "qrCodeContent": widget._initialValue ?? 'please set QRCode value',
         },
         creationParamsCodec: StandardMessageCodec(),
-        onPlatformViewCreated: (int id) {},
+        onPlatformViewCreated: (int id) {
+          //created callback
+          if (widget._creatorController != null &&
+              widget._creatorController._creatorViewCreated != null) {
+            widget._creatorController._creatorViewCreated();
+          }
+          //initial value
+          if (widget._creatorController != null) {
+            widget._creatorController.updateValue(
+              value: widget._initialValue ?? 'please set QRCode value',
+            );
+          }
+        },
       );
     } else {
       return Text("Unsupported platform!");
@@ -242,9 +224,6 @@ class _PlatformAiBarcodeCreatorState
 ///
 /// CreatorController
 class CreatorController {
-  static const MethodChannel _methodChannel =
-      MethodChannel("view_type_id_creator_view_method_channel");
-
   Function() _creatorViewCreated;
 
   CreatorController({
@@ -256,7 +235,7 @@ class CreatorController {
   void updateValue({
     @required String value,
   }) {
-    _methodChannel.invokeMethod("updateQRCodeValue", {
+    AiBarcodePlatform.methodChannelCreator.invokeMethod("updateQRCodeValue", {
       "qrCodeContent": value,
     });
   }

@@ -13,7 +13,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  # Support web plugin
+  flutter_web_plugins:
+    sdk: flutter
+  meta: ^1.1.7
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -41,6 +44,9 @@ flutter:
         pluginClass: AiBarcodePlugin
       macos:
         pluginClass: AiBarcodePlugin
+      web:
+        pluginClass: AiBarcodeWebPlugin
+        fileName: ai_barcode_web_plugin.dart
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

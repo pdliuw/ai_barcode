@@ -1,5 +1,7 @@
 library ai_barcode;
 
+import 'package:ai_barcode/src/ai_barcode_platform_interface.dart';
+
 ///
 /// Import
 import 'package:flutter/material.dart';
