@@ -8,10 +8,10 @@ import 'creator_page.dart';
 void main() => runApp(
       Airoute.createMaterialApp(
         home: App(),
-        routes: <String, AirouteBuilder>{
-          "/TaskScannerPage": () => TaskScannerPage(),
-          "/TaskNextPage": () => TaskNextPage(),
-          "/CreatorPage": () => CreatorPage(),
+        routes: <String, WidgetBuilder>{
+          "/TaskScannerPage": (_) => TaskScannerPage(),
+          "/TaskNextPage": (_) => TaskNextPage(),
+          "/CreatorPage": (_) => CreatorPage(),
         },
       ),
     );
