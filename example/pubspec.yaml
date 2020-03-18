@@ -29,6 +29,9 @@ dev_dependencies:
   # Flutter Permission.
   permission_handler: '^4.0.0'
 
+  # message
+  ai_awesome_message: ^0.1.0+2
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

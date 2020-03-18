@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ai_barcode/ai_barcode.dart';
+import 'package:airoute/airoute.dart';
+import 'package:ai_awesome_message/ai_awesome_message.dart';
 
 class TestingPage extends StatefulWidget {
   @override
@@ -14,13 +16,31 @@ class _TestingState extends State<TestingPage> {
   @override
   void initState() {
     super.initState();
-    _scannerController = ScannerController(scannerResult: (result) {});
+    _scannerController = ScannerController(scannerResult: (result) {
+      //关闭识别
+      _scannerController.stopCameraPreview();
+      //提示信息
+      Airoute.push(
+        route: AwesomeMessageRoute(
+          awesomeMessage: AwesomeHelper.createAwesome(
+              title: "Detect result", message: "$result"),
+          theme: null,
+          settings: RouteSettings(name: "/messageRouteName"),
+        ),
+      );
+      //打开识别
+      _scannerController.startCameraPreview();
+    });
   }
 
   @override
   void dispose() {
     super.dispose();
     _scannerController = null;
+  }
+
+  _startPreview() async {
+    String result = await _scannerController.startCameraPreview();
   }
 
   @override
@@ -40,7 +60,7 @@ class _TestingState extends State<TestingPage> {
             ),
             MaterialButton(
               onPressed: () {
-                _scannerController.startCameraPreview();
+                _startPreview();
               },
               textColor: Colors.white,
               color: Colors.blue,
