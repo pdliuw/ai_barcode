@@ -1,3 +1,7 @@
+## [0.3.5]
+
+* Add: adapter web camera preview
+
 ## [0.3.4]
 
 * Add: adapter web
