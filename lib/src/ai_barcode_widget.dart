@@ -63,10 +63,6 @@ class ScannerController {
   Function(String result) _scannerResult;
   Function() _scannerViewCreated;
 
-  bool _isStartCamera = false;
-  bool _isStartCameraPreview = false;
-  bool _isOpenFlash = false;
-
   ///
   /// Constructor.
   ScannerController({
@@ -78,60 +74,52 @@ class ScannerController {
   }
 
   Function() get scannerViewCreated => _scannerViewCreated;
-  bool get isStartCamera => _isStartCamera;
-  bool get isStartCameraPreview => _isStartCameraPreview;
-  bool get isOpenFlash => _isOpenFlash;
+  bool get isStartCamera => AiBarcodePlatform.instance.isStartCamera;
+  bool get isStartCameraPreview =>
+      AiBarcodePlatform.instance.isStartCameraPreview;
+  bool get isOpenFlash => AiBarcodePlatform.instance.isOpenFlash;
 
   ///
   /// Start camera without open QRCode、BarCode scanner,this is just open camera.
-  startCamera() async {
-    _isStartCamera = true;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("startCamera");
+  startCamera() {
+    AiBarcodePlatform.instance.startCamera();
   }
 
   ///
   /// Stop camera.
   stopCamera() async {
-    _isStartCamera = false;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("stopCamera");
+    AiBarcodePlatform.instance.stopCamera();
   }
 
   ///
   /// Start camera preview with open QRCode、BarCode scanner,this is open code scanner.
   startCameraPreview() async {
-    _isStartCameraPreview = true;
-    String code = await AiBarcodePlatform.methodChannelScanner
-        .invokeMethod("resumeCameraPreview");
+    String code = await AiBarcodePlatform.instance.startCameraPreview();
     _scannerResult(code);
   }
 
   ///
   /// Stop camera preview.
   stopCameraPreview() async {
-    _isStartCameraPreview = false;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("stopCameraPreview");
+    AiBarcodePlatform.instance.stopCameraPreview();
   }
 
   ///
   /// Open camera flash.
   openFlash() async {
-    _isOpenFlash = true;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("openFlash");
+    AiBarcodePlatform.instance.openFlash();
   }
 
   ///
   /// Close camera flash.
   closeFlash() async {
-    _isOpenFlash = false;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("closeFlash");
+    AiBarcodePlatform.instance.closeFlash();
   }
 
   ///
   /// Toggle camera flash.
   toggleFlash() async {
-    bool flash = isOpenFlash;
-    _isOpenFlash = !flash;
-    AiBarcodePlatform.methodChannelScanner.invokeMethod("toggleFlash");
+    AiBarcodePlatform.instance.toggleFlash();
   }
 }
 
