@@ -39,7 +39,11 @@ class _PlatformScannerWidgetState
   ///
   /// CreatedListener.
   _widgetCreatedListener() {
-    widget._platformScannerController._scannerViewCreated();
+    if (widget._platformScannerController != null) {
+      if (widget._platformScannerController._scannerViewCreated != null) {
+        widget._platformScannerController._scannerViewCreated();
+      }
+    }
   }
 
   @override
