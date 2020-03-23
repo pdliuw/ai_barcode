@@ -34,7 +34,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("条码扫描"),
+        title: Text("1D barcode/QR code"),
       ),
       body: Center(
         child: Column(
@@ -49,7 +49,7 @@ class _AppState extends State<App> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("测试页面"),
+              child: Text("Testing Web feature"),
             ),
             MaterialButton(
               onPressed: () {
@@ -60,7 +60,7 @@ class _AppState extends State<App> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("扫描二维码"),
+              child: Text("Scan 1D barcode/QR code"),
             ),
             MaterialButton(
               onPressed: () {
@@ -71,7 +71,7 @@ class _AppState extends State<App> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("生成二维码"),
+              child: Text("Create QR code"),
             ),
           ],
         ),

@@ -46,7 +46,9 @@ class _TestingState extends State<TestingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("TestingWebFeature"),
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
@@ -56,7 +58,7 @@ class _TestingState extends State<TestingPage> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("启动相机"),
+              child: Text("Start camera"),
             ),
             MaterialButton(
               onPressed: () {
@@ -64,7 +66,7 @@ class _TestingState extends State<TestingPage> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("启动相机预览"),
+              child: Text("Start camera preview"),
             ),
             MaterialButton(
               onPressed: () {
@@ -73,7 +75,7 @@ class _TestingState extends State<TestingPage> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("停止相机预览"),
+              child: Text("Stop camera preview"),
             ),
             MaterialButton(
               onPressed: () {
@@ -82,7 +84,7 @@ class _TestingState extends State<TestingPage> {
               },
               textColor: Colors.white,
               color: Colors.blue,
-              child: Text("释放相机"),
+              child: Text("Stop/Release camera"),
             ),
             Container(
               width: 750,
