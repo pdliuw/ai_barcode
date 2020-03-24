@@ -7,14 +7,21 @@ part of '../ai_barcode.dart';
 // ignore: must_be_immutable
 class PlatformAiBarcodeScannerWidget extends StatefulWidget {
   ///
-  ///Controller.
+  /// Controller.
   ScannerController _platformScannerController;
 
   ///
+  /// UnsupportedDescription
+  String _unsupportedDescription;
+
+  ///
   /// Constructor.
-  PlatformAiBarcodeScannerWidget(
-      {@required ScannerController platformScannerController}) {
+  PlatformAiBarcodeScannerWidget({
+    @required ScannerController platformScannerController,
+    String unsupportedDescription,
+  }) {
     _platformScannerController = platformScannerController;
+    _unsupportedDescription = unsupportedDescription;
   }
 
   @override
@@ -34,6 +41,8 @@ class _PlatformScannerWidgetState
     super.initState();
     //Create
     AiBarcodePlatform.instance.addListener(_widgetCreatedListener);
+    AiBarcodePlatform.instance.unsupportedPlatformDescription =
+        widget._unsupportedDescription;
   }
 
   ///

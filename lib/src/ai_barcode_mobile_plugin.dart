@@ -36,7 +36,11 @@ class AiBarcodeMobilePlugin extends AiBarcodePlatform {
         creationParamsCodec: StandardMessageCodec(),
       );
     } else {
-      return Text("不支持的平台");
+      return Center(
+        child: Text(
+          "$unsupportedPlatformDescription",
+        ),
+      );
     }
   }
 }

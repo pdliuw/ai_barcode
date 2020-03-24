@@ -358,6 +358,8 @@ class _TaskScannerPageState extends State<TaskScannerPage>
                   height: cameraHeight,
                   child: PlatformAiBarcodeScannerWidget(
                     platformScannerController: _scannerController,
+                    unsupportedDescription:
+                        "Hello this is your custom text about unsupported platform tip",
                   ),
                 ),
                 Container(

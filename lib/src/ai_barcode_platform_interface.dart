@@ -59,6 +59,18 @@ abstract class AiBarcodePlatform extends ChangeNotifier {
   /// Whether open the flash
   bool get isOpenFlash => _isOpenFlash;
 
+  String _unsupportedPlatformDescription =
+      "Unsupported platforms, working hard to support";
+
+  String get unsupportedPlatformDescription => _unsupportedPlatformDescription;
+
+  set unsupportedPlatformDescription(String text) {
+    if (text == null || text.isEmpty) {
+      return;
+    }
+    _unsupportedPlatformDescription = text;
+  }
+
   ///
   /// Instance update
   static set instance(AiBarcodePlatform instance) {
