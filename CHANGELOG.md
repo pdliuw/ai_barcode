@@ -1,3 +1,7 @@
+## [0.3.6]
+
+* Add: dynamic set your custom text about unsupported platform's tip message
+
 ## [0.3.5]
 
 * Add: adapter web camera preview
