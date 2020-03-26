@@ -1,3 +1,7 @@
+## [0.3.7]
+
+* Add: iOS creator widget
+
 ## [0.3.6]
 
 * Add: dynamic set your custom text about unsupported platform's tip message

@@ -15,9 +15,14 @@ Highlights: `` ai_barcode: Support Scanner embedded in flutter pages to meet cha
 
 ## Effect
 
-|iOS|Android|
+|iOS-Scanner|Android-Scanner|
 |:-|:-|
-|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
+|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_ios.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|
+|:-|:-|
+
+|iOS-Creator|Android-Creator|
+|:-|:-|
+|![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_ios.gif)|
 |:-|:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) in[project](https://github.com/flutter-app-sample/flutter_app_sample) practical application [flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)

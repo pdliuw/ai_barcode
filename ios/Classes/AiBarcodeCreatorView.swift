@@ -18,7 +18,7 @@ class AiBarcodeCreatorView:NSObject,FlutterPlatformView{
     var binaryMessenger:FlutterBinaryMessenger!;
     var label1=UILabel();
     
-    var qrImage:UIImage!
+    let qrcodeImageView:UIImageView = UIImageView()
     /*
      Constructor.
      */
@@ -41,13 +41,8 @@ class AiBarcodeCreatorView:NSObject,FlutterPlatformView{
     
     
     func view() -> UIView {
-        var  rootView:UIView = UIView()
-        
-        qrImage = UIImage()
-        
-        rootView.addSubview(label1)
         //return (qrImage as! UIView);
-        return rootView
+        return qrcodeImageView
     }
     
     func initMethodChannel(){
@@ -60,11 +55,17 @@ class AiBarcodeCreatorView:NSObject,FlutterPlatformView{
              Save flutter result.
              */
             self.flutterResult = result;
-            let arguments = call.arguments as! Dictionary<String, Any>;
+            let arg = call.arguments as? [String:Any]
+            
+            //let arguments = call.arguments as! Dictionary<String, Any>;
+//            call.arguments[""]
             switch(call.method){
             case "updateQRCodeValue":
                 //Update QRCode
-                //let qrCodeContent:String = arguments["qrCodeContent"] as? String
+                let qrCodeContent = arg?["qrCodeContent"] as? String
+                //Update view
+                self.qrcodeImageView.image = self.setupQRCodeImage(text: qrCodeContent ?? "", image: nil)
+                
                 
                 break;
         
@@ -72,6 +73,8 @@ class AiBarcodeCreatorView:NSObject,FlutterPlatformView{
                 self.flutterResult?("method:\(call.method) not implement");
             }
         }
+        
+        
     }
     
     
