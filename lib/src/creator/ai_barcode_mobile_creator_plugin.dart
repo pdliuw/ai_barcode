@@ -74,5 +74,6 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
   updateQRCodeValue(String value) {
     AiBarcodeCreatorPlatform.instance.initialValueOfCreator = value;
     notifyListeners();
+    return super.updateQRCodeValue(value);
   }
 }
