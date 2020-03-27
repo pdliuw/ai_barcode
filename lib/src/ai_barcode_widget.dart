@@ -146,12 +146,15 @@ class ScannerController {
 class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
   CreatorController _creatorController;
   String _initialValue;
+  String _unsupportedDescription;
   PlatformAiBarcodeCreatorWidget({
     @required CreatorController creatorController,
     @required String initialValue,
+    String unsupportedDescription,
   }) {
     _creatorController = creatorController;
     _initialValue = initialValue;
+    _unsupportedDescription = unsupportedDescription;
   }
   @override
   State<StatefulWidget> createState() {
@@ -167,6 +170,8 @@ class _PlatformAiBarcodeCreatorState
   void initState() {
     super.initState();
     //create
+    AiBarcodeCreatorPlatform.instance.unsupportedPlatformDescription =
+        widget._unsupportedDescription;
     AiBarcodeCreatorPlatform.instance.initialValueOfCreator =
         widget._initialValue;
     AiBarcodeCreatorPlatform.instance.addListener(_creatorCreatedCallback);

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 
 import '../ai_barcode_platform_interface.dart';
 import 'ai_barcode_platform_creator_interface.dart';
@@ -46,8 +47,32 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
               AiBarcodeCreatorPlatform.instance.initialValueOfCreator);
         },
       );
+    } else if (targetPlatform == TargetPlatform.macOS) {
+      QrImage qrImage = QrImage(
+        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
+        version: QrVersions.auto,
+        size: 200.0,
+      );
+      return qrImage;
+    } else if (targetPlatform == TargetPlatform.windows) {
+      QrImage qrImage = QrImage(
+        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
+        version: QrVersions.auto,
+        size: 200.0,
+      );
+      return qrImage;
     } else {
-      return Text("Unsupported platform!");
+      return Center(
+        child: Text(
+          unsupportedPlatformDescription,
+        ),
+      );
     }
+  }
+
+  @override
+  updateQRCodeValue(String value) {
+    AiBarcodeCreatorPlatform.instance.initialValueOfCreator = value;
+    notifyListeners();
   }
 }

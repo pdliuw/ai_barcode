@@ -5,17 +5,12 @@ import '../ai_barcode_platform_interface.dart';
 import 'ai_barcode_platform_scanner_interface.dart';
 
 ///
-/// AiBarcodeMobilePlugin
+/// AiBarcodeMobileScannerPlugin
 class AiBarcodeMobileScannerPlugin extends AiBarcodeScannerPlatform {
   @override
   Widget buildScannerView(BuildContext context) {
     return _cameraView(context);
   }
-
-//  @override
-//  Widget buildCreatorView(BuildContext context) {
-//    return _barcodeCreator(context: context);
-//  }
 
   /// Barcode reader widget
   ///

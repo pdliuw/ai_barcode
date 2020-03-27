@@ -35,6 +35,18 @@ abstract class AiBarcodeCreatorPlatform extends ChangeNotifier
     _initialValueOfCreator = initialValue;
   }
 
+  String _unsupportedPlatformDescription =
+      "Unsupported platforms, working hard to support";
+
+  String get unsupportedPlatformDescription => _unsupportedPlatformDescription;
+
+  set unsupportedPlatformDescription(String text) {
+    if (text == null || text.isEmpty) {
+      return;
+    }
+    _unsupportedPlatformDescription = text;
+  }
+
   ///
   /// Instance update
   static set instance(AiBarcodeCreatorPlatform instance) {

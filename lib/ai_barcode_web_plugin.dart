@@ -118,10 +118,6 @@ class AiBarcodeCreatorWebPlugin extends AiBarcodeCreatorPlatform {
     );
 
     return qrImage;
-//    return HtmlElementView(
-//      key: UniqueKey(),
-//      viewType: AiBarcodePlatform.viewIdOfCreator,
-//    );
   }
 
   @override
