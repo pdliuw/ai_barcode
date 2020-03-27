@@ -1,37 +1,51 @@
-import 'dart:html' as html;
-
-import 'package:ai_barcode/src/ai_barcode_platform_interface.dart';
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:flutter/material.dart';
-import 'dart:ui' as ui;
 import 'dart:async';
+import 'dart:html' as html;
+import 'dart:ui' as ui;
+
+import 'package:ai_barcode/src/scanner/ai_barcode_platform_scanner_interface.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:qr_flutter/qr_flutter.dart';
+
+import 'src/ai_barcode_platform_interface.dart';
+import 'src/creator/ai_barcode_platform_creator_interface.dart';
 
 ///
 /// AiBarcodeWebPlugin
-class AiBarcodeWebPlugin extends AiBarcodePlatform {
+class AiBarcodeWebPlugin {
+  /// Registers this class as the default instance of [AiBarcodeWebPlugin].
+  static void registerWith(Registrar registrar) {
+    // Registers plugins
+    AiBarcodeScannerWebPlugin.registerWith(registrar);
+    AiBarcodeCreatorWebPlugin.registerWith(registrar);
+  }
+}
+
+/// AiBarcodeScannerWebPlugin
+class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
   ///
   /// VideoElement
   static html.VideoElement _videoElement = html.VideoElement();
 
   /// Registers this class as the default instance of [AiBarcodeWebPlugin].
   static void registerWith(Registrar registrar) {
-    AiBarcodePlatform.instance = AiBarcodeWebPlugin();
+    AiBarcodeScannerPlatform.instance = AiBarcodeScannerWebPlugin();
 
     // ignore: undefined_prefixed_name
-    ui.platformViewRegistry.registerViewFactory(AiBarcodePlatform.viewId,
-        (int viewId) {
+    ui.platformViewRegistry
+        .registerViewFactory(AiBarcodePlatform.viewIdOfScanner, (int viewId) {
       return _videoElement;
     });
   }
 
   @override
-  Widget buildView(BuildContext context) {
+  Widget buildScannerView(BuildContext context) {
     //TODO: Waiting complete this.
     Future.delayed(Duration(seconds: 2))
         .then((value) => onPlatformScannerViewCreated(0));
     return HtmlElementView(
       key: UniqueKey(),
-      viewType: AiBarcodePlatform.viewId,
+      viewType: AiBarcodePlatform.viewIdOfScanner,
     );
   }
 
@@ -76,4 +90,44 @@ class AiBarcodeWebPlugin extends AiBarcodePlatform {
 
   @override
   openFlash() async {}
+}
+
+/// AiBarcodeCreatorWebPlugin
+class AiBarcodeCreatorWebPlugin extends AiBarcodeCreatorPlatform {
+  ///
+  /// VideoElement
+  static html.VideoElement _videoElement = html.VideoElement();
+
+  /// Registers this class as the default instance of [AiBarcodeCreatorWebPlugin].
+  static void registerWith(Registrar registrar) {
+    AiBarcodeCreatorPlatform.instance = AiBarcodeCreatorWebPlugin();
+
+    // ignore: undefined_prefixed_name
+    ui.platformViewRegistry
+        .registerViewFactory(AiBarcodePlatform.viewIdOfCreator, (int viewId) {
+      return _videoElement;
+    });
+  }
+
+  @override
+  Widget buildCreatorView(BuildContext context) {
+    QrImage qrImage = QrImage(
+      data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
+      version: QrVersions.auto,
+      size: 200.0,
+    );
+
+    return qrImage;
+//    return HtmlElementView(
+//      key: UniqueKey(),
+//      viewType: AiBarcodePlatform.viewIdOfCreator,
+//    );
+  }
+
+  @override
+  updateQRCodeValue(String value) {
+    AiBarcodeCreatorPlatform.instance.initialValueOfCreator = value;
+    notifyListeners();
+    return super.updateQRCodeValue(value);
+  }
 }
