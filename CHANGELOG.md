@@ -1,3 +1,7 @@
+## [1.0.2]
+
+* Improve health
+
 ## [1.0.1]
 
 * Improve health
