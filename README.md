@@ -232,6 +232,14 @@ iOS支持PlatformView配置：
 
 看到这里还意犹未尽？[点击，查看项目示例](https://github.com/pdliuw/ai_barcode/tree/master/example/lib)
 
+## 感谢
+
+
+|iOS-Scanner/Creator|Android-Scanner/Creator|Web、MacOS/Creator|
+|:-|:-|:-|
+|[MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[dm77/barcodescanner](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|qr_flutter [![pub package](https://img.shields.io/pub/v/qr_flutter.svg)](https://github.com/lukef/qr.flutter)|
+|:-|:-|:-|
+
 ## 待办
 
 * 支持：生成条码

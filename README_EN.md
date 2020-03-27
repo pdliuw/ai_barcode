@@ -214,6 +214,15 @@ Complete example
 
 Seeing it here is overwhelming？[Click to see project examples](https://github.com/pdliuw/ai_barcode/tree/master/example/lib)
 
+
+## Thanksgiving
+
+
+|iOS-Scanner/Creator|Android-Scanner/Creator|Web、MacOS/Creator|
+|:-|:-|:-|
+|[MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[dm77/barcodescanner](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_android.gif)|qr_flutter [![pub package](https://img.shields.io/pub/v/qr_flutter.svg)](https://github.com/lukef/qr.flutter)|
+|:-|:-|:-|
+
 ## TODO
 
 * Support: Generate barcode
