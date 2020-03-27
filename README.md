@@ -235,9 +235,9 @@ iOS支持PlatformView配置：
 ## 感谢
 
 
-|iOS-Barcode/QRCode Scanner/Creator|Android-Barcode/QRCode Scanner/Creator|Web、MacOS-QrCode Creator|
+|iOS-一维码/二维码 识别/生成|Android-一维码/二维码 识别/生成|Web、MacOS-二维码 生成|
 |:-|:-|:-|
-|[Built on: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[Built on: dm77/barcodescanner](https://github.com/dm77/barcodescanner)|[Built on: qr_flutter](https://github.com/lukef/qr.flutter)|
+|[基于: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[基于: dm77/barcodescanner](https://github.com/dm77/barcodescanner)|[基于: qr_flutter](https://github.com/lukef/qr.flutter)|
 |:-|:-|:-|
 
 ## 待办
