@@ -1,3 +1,7 @@
+## [1.0.1]
+
+* Improve health
+
 ## [1.0.0]
 
 * Add: Support for generating QR codes on the web platform

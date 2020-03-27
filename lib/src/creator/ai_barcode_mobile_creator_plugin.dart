@@ -47,26 +47,13 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
               AiBarcodeCreatorPlatform.instance.initialValueOfCreator);
         },
       );
-    } else if (targetPlatform == TargetPlatform.macOS) {
-      QrImage qrImage = QrImage(
-        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
-        version: QrVersions.auto,
-        size: 200.0,
-      );
-      return qrImage;
-    } else if (targetPlatform == TargetPlatform.windows) {
-      QrImage qrImage = QrImage(
-        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
-        version: QrVersions.auto,
-        size: 200.0,
-      );
-      return qrImage;
     } else {
-      return Center(
-        child: Text(
-          unsupportedPlatformDescription,
-        ),
+      QrImage qrImage = QrImage(
+        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
+        version: QrVersions.auto,
+        size: 200.0,
       );
+      return qrImage;
     }
   }
 
