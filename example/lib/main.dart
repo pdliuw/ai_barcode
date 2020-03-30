@@ -1,22 +1,26 @@
+import 'package:ai_barcode_example/full_screen_scanner_page.dart';
 import 'package:ai_barcode_example/task_next_page.dart';
-import 'package:ai_barcode_example/task_scanner_page.dart';
 import 'package:ai_barcode_example/testing_page.dart';
 import 'package:airoute/airoute.dart';
 import 'package:flutter/material.dart';
 
 import 'creator_page.dart';
+import 'custom_size_scanner_page.dart';
+import 'select_scanner_style_page.dart';
 
 void main() => runApp(
-      Airoute.createMaterialApp(
-        home: App(),
-        routes: <String, WidgetBuilder>{
-          "/TaskScannerPage": (_) => TaskScannerPage(),
-          "/TaskNextPage": (_) => TaskNextPage(),
-          "/CreatorPage": (_) => CreatorPage(),
-          "/TestingPage": (_) => TestingPage(),
-        },
-      ),
-    );
+  Airoute.createMaterialApp(
+    home: App(),
+    routes: <String, WidgetBuilder>{
+      "/SelectScannerStylePage": (_) => SelectScannerStylePage(),
+      "/CustomSizeScannerPage": (_) => CustomSizeScannerPage(),
+      "/FullScreenScannerPage": (_) => FullScreenScannerPage(),
+      "/TaskNextPage": (_) => TaskNextPage(),
+      "/CreatorPage": (_) => CreatorPage(),
+      "/TestingPage": (_) => TestingPage(),
+    },
+  ),
+);
 
 ///
 /// App
@@ -55,7 +59,7 @@ class _AppState extends State<App> {
               onPressed: () {
                 //跳转页面=扫描二维码
                 Airoute.pushNamed(
-                  routeName: "/TaskScannerPage",
+                  routeName: "/SelectScannerStylePage",
                 );
               },
               textColor: Colors.white,
