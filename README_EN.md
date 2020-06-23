@@ -230,7 +230,6 @@ Seeing it here is overwhelming？[Click to see project examples](https://github.
 
 ## TODO
 
-* Support: Generate barcode
 
 * Support: Camera image can be frozen after successfully scanning barcode on iOS
 
