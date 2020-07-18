@@ -22,9 +22,7 @@ dev_dependencies:
     path: ../
 
   # route package
-  airoute:
-    git:
-      url: https://github.com/pdliuw/airoute.git
+  airoute: ^0.3.2
 
   # Flutter Permission.
   permission_handler: '^4.0.0'

@@ -1,3 +1,7 @@
+## [1.0.5]
+
+* Fix: [issues:5](https://github.com/pdliuw/ai_barcode/issues/5)
+
 ## [1.0.4]
 
 * Improve health

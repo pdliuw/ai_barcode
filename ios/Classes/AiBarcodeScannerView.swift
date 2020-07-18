@@ -136,7 +136,6 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
                 }
             } else {
                 self.flutterResult?("Unable to start scanning This app does not have permission to access the camera");
-                UIAlertView(title: "Scanning Unavailable", message: "This app does not have permission to access the camera", delegate: nil, cancelButtonTitle: nil, otherButtonTitles: "Ok").show()
             }
         })
     }

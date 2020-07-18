@@ -4,7 +4,7 @@ PODS:
     - MTBBarcodeScanner
   - Flutter (1.0.0)
   - MTBBarcodeScanner (5.0.11)
-  - "permission_handler (4.4.0+hotfix.2)":
+  - "permission_handler (4.4.0+hotfix.4)":
     - Flutter
 
 DEPENDENCIES:
@@ -28,7 +28,7 @@ SPEC CHECKSUMS:
   ai_barcode: a415de3b4616800a963d265b292511f890a3649d
   Flutter: 0e3d915762c693b495b44d77113d4970485de6ec
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
-  permission_handler: d5d46b2ca93671e8dcf870b949e304c7ddb65ad0
+  permission_handler: 8278954f2382902f63f00dd8828769c0bd6d511b
 
 PODFILE CHECKSUM: 1b66dae606f75376c5f2135a8290850eeb09ae83
 
