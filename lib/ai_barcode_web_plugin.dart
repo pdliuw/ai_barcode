@@ -30,17 +30,16 @@ class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
   /// Registers this class as the default instance of [AiBarcodeWebPlugin].
   static void registerWith(Registrar registrar) {
     AiBarcodeScannerPlatform.instance = AiBarcodeScannerWebPlugin();
-
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry
-        .registerViewFactory(AiBarcodePlatform.viewIdOfScanner, (int viewId) {
-      return _videoElement;
-    });
+//
+//    // ignore: undefined_prefixed_name
+//    ui.platformViewRegistry
+//        .registerViewFactory(AiBarcodePlatform.viewIdOfScanner, (int viewId) {
+//      return _videoElement;
+//    });
   }
 
   @override
   Widget buildScannerView(BuildContext context) {
-    //TODO: Waiting complete this.
     Future.delayed(Duration(seconds: 2))
         .then((value) => onPlatformScannerViewCreated(0));
     return HtmlElementView(
