@@ -9,18 +9,18 @@ import 'custom_size_scanner_page.dart';
 import 'select_scanner_style_page.dart';
 
 void main() => runApp(
-  Airoute.createMaterialApp(
-    home: App(),
-    routes: <String, WidgetBuilder>{
-      "/SelectScannerStylePage": (_) => SelectScannerStylePage(),
-      "/CustomSizeScannerPage": (_) => CustomSizeScannerPage(),
-      "/FullScreenScannerPage": (_) => FullScreenScannerPage(),
-      "/TaskNextPage": (_) => TaskNextPage(),
-      "/CreatorPage": (_) => CreatorPage(),
-      "/TestingPage": (_) => TestingPage(),
-    },
-  ),
-);
+      Airoute.createMaterialApp(
+        home: App(),
+        routes: <String, WidgetBuilder>{
+          "/SelectScannerStylePage": (_) => SelectScannerStylePage(),
+          "/CustomSizeScannerPage": (_) => CustomSizeScannerPage(),
+          "/FullScreenScannerPage": (_) => FullScreenScannerPage(),
+          "/TaskNextPage": (_) => TaskNextPage(),
+          "/CreatorPage": (_) => CreatorPage(),
+          "/TestingPage": (_) => TestingPage(),
+        },
+      ),
+    );
 
 ///
 /// App
@@ -34,8 +34,6 @@ class App extends StatefulWidget {
 ///
 /// _AppState
 class _AppState extends State<App> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(

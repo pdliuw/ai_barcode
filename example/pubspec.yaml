@@ -13,22 +13,22 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   # barcode plugin
   ai_barcode:
     path: ../
 
   # route package
-  airoute: ^0.3.2
+  airoute: ^0.3.3
 
   # Flutter Permission.
-  permission_handler: '^4.0.0'
+  permission_handler: ^5.0.1+1
 
   # message
-  ai_awesome_message: ^0.1.0+2
+  ai_awesome_message: ^0.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

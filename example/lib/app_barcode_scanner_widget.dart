@@ -2,8 +2,6 @@ import 'package:ai_barcode/ai_barcode.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-//import 'package:super_qr_reader/super_qr_reader.dart';
-
 String _label;
 Function(String result) _resultCallback;
 
@@ -53,9 +51,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
   }
 
   void _requestPermission() async {
-    if (await Permission.camera
-        .request()
-        .isGranted) {
+    if (await Permission.camera.request().isGranted) {
       setState(() {
         _isGranted = true;
       });
@@ -69,44 +65,48 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
         Expanded(
           child: _isGranted
               ? _useCameraScan
-              ? _BarcodeScannerWidget()
-              : _BarcodeInputWidget.defaultStyle(
-            changed: (String value) {
-              _inputValue = value;
-            },
-          )
+                  ? _BarcodeScannerWidget()
+                  : _BarcodeInputWidget.defaultStyle(
+                      changed: (String value) {
+                        _inputValue = value;
+                      },
+                    )
               : Center(
-            child: AppExpandedButtonWidget.defaultStyle(
-              onTap: () {
-                _requestPermission();
-              },
-              text: "请求权限",
-            ),
-          ),
+                  child: OutlineButton(
+                    onPressed: () {
+                      _requestPermission();
+                    },
+                    child: Text("请求权限"),
+                  ),
+                ),
         ),
         _useCameraScan
-            ? AppExpandedButtonWidget.defaultStyle(
-          onTap: () {
-            setState(() {
-              _useCameraScan = false;
-            });
-          },
-          text: "手动输入$_label",
-          leftFlex: 0,
-          rightFlex: 0,
-        )
-            : AppStickyButtonWidget.defaultStyle(
-          beginName: "扫描$_label",
-          beginTapCallback: () {
-            setState(() {
-              _useCameraScan = true;
-            });
-          },
-          endName: "确定",
-          endTapCallback: () {
-            _resultCallback(_inputValue);
-          },
-        ),
+            ? OutlineButton(
+                onPressed: () {
+                  setState(() {
+                    _useCameraScan = false;
+                  });
+                },
+                child: Text("手动输入$_label"),
+              )
+            : Row(
+                children: [
+                  OutlineButton(
+                    onPressed: () {
+                      setState(() {
+                        _useCameraScan = true;
+                      });
+                    },
+                    child: Text("扫描$_label"),
+                  ),
+                  OutlineButton(
+                    onPressed: () {
+                      _resultCallback(_inputValue);
+                    },
+                    child: Text("确定"),
+                  ),
+                ],
+              ),
       ],
     );
   }
@@ -138,7 +138,7 @@ class _BarcodeInputState extends State<_BarcodeInputWidget> {
       _controller.value = _controller.value.copyWith(
         text: text,
         selection:
-        TextSelection(baseOffset: text.length, extentOffset: text.length),
+            TextSelection(baseOffset: text.length, extentOffset: text.length),
         composing: TextRange.empty,
       );
     });
@@ -152,9 +152,8 @@ class _BarcodeInputState extends State<_BarcodeInputWidget> {
         Row(
           children: <Widget>[
             Padding(padding: EdgeInsets.all(8)),
-            AppTextWidget.defaultStyle(
-              data: "$_label：",
-              textSize: AppTextSize.middle3,
+            Text(
+              "$_label：",
             ),
             Expanded(
               child: TextFormField(
@@ -190,8 +189,16 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
     _scannerController = ScannerController(scannerResult: (result) {
       _resultCallback(result);
     }, scannerViewCreated: () {
-      _scannerController.startCamera();
-      _scannerController.startCameraPreview();
+      TargetPlatform platform = Theme.of(context).platform;
+      if (TargetPlatform.iOS == platform) {
+        Future.delayed(Duration(seconds: 2), () {
+          _scannerController.startCamera();
+          _scannerController.startCameraPreview();
+        });
+      } else {
+        _scannerController.startCamera();
+        _scannerController.startCameraPreview();
+      }
     });
   }
 
@@ -207,10 +214,6 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        MaterialButton(
-          onPressed: () {},
-          child: Text("哈哈"),
-        ),
         Expanded(
           child: _getScanWidgetByPlatform(),
         )
@@ -219,10 +222,6 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
   }
 
   Widget _getScanWidgetByPlatform() {
-    TargetPlatform targetPlatform = Theme
-        .of(context)
-        .platform;
-
     return PlatformAiBarcodeScannerWidget(
       platformScannerController: _scannerController,
     );

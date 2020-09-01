@@ -1,3 +1,7 @@
+## [1.1.0]
+
+* add: barcode widget with request permission helper widget
+
 ## [1.0.6]
 
 * Improve healthy 
