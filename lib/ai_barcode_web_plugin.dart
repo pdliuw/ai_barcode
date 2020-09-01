@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'dart:html' as html;
-import 'dart:ui' as ui;
 
 import 'package:ai_barcode/src/scanner/ai_barcode_platform_scanner_interface.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +23,7 @@ class AiBarcodeWebPlugin {
 class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
   ///
   /// VideoElement
-  static html.VideoElement _videoElement = html.VideoElement();
+//  static html.VideoElement _videoElement = html.VideoElement();
 
   /// Registers this class as the default instance of [AiBarcodeWebPlugin].
   static void registerWith(Registrar registrar) {
@@ -51,18 +49,18 @@ class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
   @override
   startCamera() async {
     //start camera
-    html.window.navigator
-        .getUserMedia(video: true)
-        .then((html.MediaStream mediaStream) {
-      _videoElement.srcObject = mediaStream;
-      return mediaStream;
-    });
+//    html.window.navigator
+//        .getUserMedia(video: true)
+//        .then((html.MediaStream mediaStream) {
+//      _videoElement.srcObject = mediaStream;
+//      return mediaStream;
+//    });
   }
 
   @override
   Future<String> startCameraPreview() async {
     //start camera preview
-    _videoElement.play();
+//    _videoElement.play();
     return Future.delayed(Duration(seconds: 10))
         .then((value) => "after 10 second ,web code result doing!");
   }
@@ -70,15 +68,15 @@ class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
   @override
   stopCameraPreview() async {
     //stop camera preview
-    _videoElement.pause();
+//    _videoElement.pause();
   }
 
   @override
   stopCamera() async {
     //stop camera and release camera
-    _videoElement.srcObject.getTracks().forEach((element) {
-      element.stop();
-    });
+//    _videoElement.srcObject.getTracks().forEach((element) {
+//      element.stop();
+//    });
   }
 
   @override
@@ -95,17 +93,17 @@ class AiBarcodeScannerWebPlugin extends AiBarcodeScannerPlatform {
 class AiBarcodeCreatorWebPlugin extends AiBarcodeCreatorPlatform {
   ///
   /// VideoElement
-  static html.VideoElement _videoElement = html.VideoElement();
+//  static html.VideoElement _videoElement = html.VideoElement();
 
   /// Registers this class as the default instance of [AiBarcodeCreatorWebPlugin].
   static void registerWith(Registrar registrar) {
     AiBarcodeCreatorPlatform.instance = AiBarcodeCreatorWebPlugin();
-
-    // ignore: undefined_prefixed_name
-    ui.platformViewRegistry
-        .registerViewFactory(AiBarcodePlatform.viewIdOfCreator, (int viewId) {
-      return _videoElement;
-    });
+//
+//    // ignore: undefined_prefixed_name
+//    ui.platformViewRegistry
+//        .registerViewFactory(AiBarcodePlatform.viewIdOfCreator, (int viewId) {
+//      return _videoElement;
+//    });
   }
 
   @override

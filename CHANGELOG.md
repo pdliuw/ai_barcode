@@ -1,3 +1,7 @@
+## [1.1.3]
+
+* remove: web platform
+
 ## [1.1.0]
 
 * add: barcode widget with request permission helper widget
