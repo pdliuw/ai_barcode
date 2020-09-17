@@ -1,3 +1,7 @@
+## [1.1.4]
+
+* improve healthy
+
 ## [1.1.3]
 
 * remove: web platform
