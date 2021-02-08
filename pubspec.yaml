@@ -1,14 +1,13 @@
 name: ai_barcode
 description: AiBarcode supports scanner、creator the one-dimensional bar code and two-dimensional bar code(Android 、iOS), and support the Scanner embedded in Flutter pages
-version: 1.1.4
+version: 1.2.0
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
-  # Flutter versions prior to 1.10 did not support the flutter.plugin.platforms map.
-  flutter: ">=1.10.0 <2.0.0"
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.20.0 <2.0.0"
 
 dependencies:
   flutter:

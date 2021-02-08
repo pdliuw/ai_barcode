@@ -1,3 +1,9 @@
+## [1.2.0]
+
+* adapter flutter = v1.22
+* upgrade iOS development target from 8.0 to 9.0 
+* optimize something
+
 ## [1.1.4]
 
 * improve healthy
