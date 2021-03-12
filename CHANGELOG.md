@@ -1,3 +1,8 @@
+## [2.0.0]
+
+* fix something
+* improve something
+
 ## [1.6.0]
 
 * improve: improve design

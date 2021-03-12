@@ -54,11 +54,23 @@ class _PlatformScannerWidgetState
     }
   }
 
+  ///
+  /// Web result callback
+  void _webResultCallback(String result) {
+    if (widget._platformScannerController != null) {
+      if (widget._platformScannerController._scannerResult != null) {
+        //callback
+        widget._platformScannerController._scannerResult(result);
+      }
+    }
+  }
+
   @override
   void dispose() {
     super.dispose();
     //Release
     AiBarcodeScannerPlatform.instance.removeListener(_widgetCreatedListener);
+    AiBarcodeScannerPlatform.instance.removeResultCallback(_webResultCallback);
   }
 
   @override
@@ -69,6 +81,7 @@ class _PlatformScannerWidgetState
     }
     //Create
     AiBarcodeScannerPlatform.instance.addListener(_widgetCreatedListener);
+    AiBarcodeScannerPlatform.instance.addResultCallback(_webResultCallback);
     AiBarcodeScannerPlatform.instance.unsupportedPlatformDescription =
         widget._unsupportedDescription;
     return AiBarcodeScannerPlatform.instance.buildScannerView(context);

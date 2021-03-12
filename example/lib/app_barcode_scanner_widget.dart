@@ -46,11 +46,9 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
   @override
   void initState() {
     super.initState();
-
-    _requestPermission();
   }
 
-  void _requestPermission() async {
+  void _requestMobilePermission() async {
     if (await Permission.camera.request().isGranted) {
       setState(() {
         _isGranted = true;
@@ -60,6 +58,16 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
 
   @override
   Widget build(BuildContext context) {
+    TargetPlatform platform = Theme.of(context).platform;
+
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      _requestMobilePermission();
+    } else {
+      setState(() {
+        _isGranted = true;
+      });
+    }
+
     return Column(
       children: <Widget>[
         Expanded(
@@ -74,7 +82,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
               : Center(
                   child: OutlineButton(
                     onPressed: () {
-                      _requestPermission();
+                      _requestMobilePermission();
                     },
                     child: Text("请求权限"),
                   ),

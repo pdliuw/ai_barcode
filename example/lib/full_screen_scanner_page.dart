@@ -19,7 +19,7 @@ class _FullScreenScannerPageState extends State<FullScreenScannerPage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(_code),
+              Text("「$_code」"),
             ],
           ),
           Expanded(
