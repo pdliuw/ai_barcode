@@ -1,23 +1,20 @@
 name: ai_barcode
 description: AiBarcode supports scanner、creator the one-dimensional bar code and two-dimensional bar code(Android 、iOS), and support the Scanner embedded in Flutter pages
-version: 1.2.0
+version: 1.6.0
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.20.0 <2.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  # Support web plugin
-  flutter_web_plugins:
-    sdk: flutter
   meta: ^1.1.7
-  # flutter create QRCode
-  qr_flutter: ^3.2.0
+  ai_barcode_platform_interface: ^2.0.0
+  ai_barcode_web: ^1.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,8 +43,7 @@ flutter:
       macos:
         pluginClass: AiBarcodePlugin
       web:
-        pluginClass: AiBarcodeWebPlugin
-        fileName: ai_barcode_web_plugin.dart
+        default_package: ai_barcode_web
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

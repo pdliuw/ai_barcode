@@ -1,9 +1,6 @@
+import 'package:ai_barcode_platform_interface/ai_barcode_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:qr_flutter/qr_flutter.dart';
-
-import '../ai_barcode_platform_interface.dart';
-import 'ai_barcode_platform_creator_interface.dart';
 
 /// AiBarcodeMobileCreatorPlugin
 class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
@@ -48,12 +45,11 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
         },
       );
     } else {
-      QrImage qrImage = QrImage(
-        data: AiBarcodeCreatorPlatform.instance.initialValueOfCreator,
-        version: QrVersions.auto,
-        size: 200.0,
+      return Center(
+        child: Text(
+          "$unsupportedPlatformDescription",
+        ),
       );
-      return qrImage;
     }
   }
 

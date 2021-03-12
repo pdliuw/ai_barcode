@@ -1,4 +1,7 @@
-part of '../ai_barcode.dart';
+import 'package:ai_barcode/src/creator/ai_barcode_mobile_creator_plugin.dart';
+import 'package:ai_barcode/src/scanner/ai_barcode_mobile_scanner_plugin.dart';
+import 'package:ai_barcode_platform_interface/ai_barcode_platform_interface.dart';
+import 'package:flutter/material.dart';
 
 ///
 /// PlatformScannerWidget
@@ -39,10 +42,6 @@ class _PlatformScannerWidgetState
   @override
   void initState() {
     super.initState();
-    //Create
-    AiBarcodeScannerPlatform.instance.addListener(_widgetCreatedListener);
-    AiBarcodeScannerPlatform.instance.unsupportedPlatformDescription =
-        widget._unsupportedDescription;
   }
 
   ///
@@ -64,6 +63,14 @@ class _PlatformScannerWidgetState
 
   @override
   Widget build(BuildContext context) {
+    TargetPlatform platform = Theme.of(context).platform;
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      AiBarcodeScannerPlatform.instance = AiBarcodeMobileScannerPlugin();
+    }
+    //Create
+    AiBarcodeScannerPlatform.instance.addListener(_widgetCreatedListener);
+    AiBarcodeScannerPlatform.instance.unsupportedPlatformDescription =
+        widget._unsupportedDescription;
     return AiBarcodeScannerPlatform.instance.buildScannerView(context);
   }
 }
@@ -169,12 +176,6 @@ class _PlatformAiBarcodeCreatorState
   @override
   void initState() {
     super.initState();
-    //create
-    AiBarcodeCreatorPlatform.instance.unsupportedPlatformDescription =
-        widget._unsupportedDescription;
-    AiBarcodeCreatorPlatform.instance.initialValueOfCreator =
-        widget._initialValue;
-    AiBarcodeCreatorPlatform.instance.addListener(_creatorCreatedCallback);
   }
 
   _creatorCreatedCallback() {
@@ -193,6 +194,16 @@ class _PlatformAiBarcodeCreatorState
 
   @override
   Widget build(BuildContext context) {
+    TargetPlatform platform = Theme.of(context).platform;
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      AiBarcodeCreatorPlatform.instance = AiBarcodeMobileCreatorPlugin();
+    }
+    //create
+    AiBarcodeCreatorPlatform.instance.unsupportedPlatformDescription =
+        widget._unsupportedDescription;
+    AiBarcodeCreatorPlatform.instance.initialValueOfCreator =
+        widget._initialValue;
+    AiBarcodeCreatorPlatform.instance.addListener(_creatorCreatedCallback);
     return AiBarcodeCreatorPlatform.instance.buildCreatorView(context);
   }
 }
