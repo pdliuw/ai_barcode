@@ -25,10 +25,10 @@ Highlights: `` ai_barcode: Support Scanner embedded in flutter pages to meet cha
 |![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_ios.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|
 |:-|:-|
 
-|Web-Creator|MacOS-Creator|
-|:-|:-|
-|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|![macOS](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_macos.gif)|
-|:-|:-|
+|Web-Creator|
+|:-|
+|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|
+|:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) in[project](https://github.com/flutter-app-sample/flutter_app_sample) practical application [flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
