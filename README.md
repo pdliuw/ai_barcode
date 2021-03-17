@@ -7,7 +7,7 @@
 |[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
 |:-|:-|
 
-ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别与生成
+ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识别与生成
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 

@@ -7,7 +7,7 @@
 |[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
 |:-|:-|
 
-ai_barcode: Support Android and IOS recognition of 'one-dimensional barcode' and 'two-dimensional barcode'
+ai_barcode: Support Android、iOS and web recognition of 'one-dimensional barcode' and 'two-dimensional barcode'
 
 [![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
@@ -28,6 +28,11 @@ Highlights: `` ai_barcode: Support Scanner embedded in flutter pages to meet cha
 |Web-Creator|
 |:-|
 |![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|
+|:-|
+
+|Web-Scanner|
+|:-|
+|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_web.gif)|
 |:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) in[project](https://github.com/flutter-app-sample/flutter_app_sample) practical application [flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)

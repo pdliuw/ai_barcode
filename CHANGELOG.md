@@ -1,3 +1,7 @@
+## [2.1.0]
+
+* improve web something
+
 ## [2.0.0]
 
 * fix something
