@@ -9,7 +9,10 @@
 
 ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识别与生成
 
-[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
+| Plugin | Pub | Points | Popularity | Likes |
+|-----|-----|--------|------------|-------|
+|[ai_barcode](https://github.com/pdliuw/ai_barcode)|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
+
 
 亮点: ``ai_barcode:支持在flutter页面中嵌入Scanner以此来应对多变的业务需求``
 
@@ -48,9 +51,9 @@ ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识�
 
 在文件 'pubspec.yaml' 中添加
 
-| Pub | Points | Popularity | Likes |
-|-----|--------|------------|-------|
-|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
+| Plugin | Pub | Points | Popularity | Likes |
+|-----|-----|--------|------------|-------|
+|[ai_barcode](https://github.com/pdliuw/ai_barcode)|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
 
 ```
 
