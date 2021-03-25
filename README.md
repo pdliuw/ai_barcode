@@ -48,7 +48,9 @@ ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识�
 
 在文件 'pubspec.yaml' 中添加
 
-[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
+| Pub | Points | Popularity | Likes |
+|-----|--------|------------|-------|
+|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
 
 ```
 
