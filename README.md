@@ -28,15 +28,11 @@ ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识�
 |![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_ios.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|
 |:-|:-|
 
-|Web-Creator|
-|:-|
-|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|
-|:-|
+|Web-Creator|Web-Scanner|
+|:-|:-|
+|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_web.gif)|
+|:-|:-|
 
-|Web-Scanner|
-|:-|
-|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_web.gif)|
-|:-|
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
