@@ -19,13 +19,15 @@ dependencies:
   ai_barcode_web:
     git:
       url: https://github.com/radvansky-tomas/ai_barcode_web.git
+
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-
+`
 # The following section is specific to Flutter.
 flutter:
   # This section identifies this Flutter project as a plugin project.
