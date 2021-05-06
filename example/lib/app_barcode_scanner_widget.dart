@@ -49,11 +49,14 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
   }
 
   void _requestMobilePermission() async {
-    if (await Permission.camera.request().isGranted) {
-      setState(() {
-        _isGranted = true;
-      });
-    }
+    setState(() {
+      _isGranted = true;
+    });
+    // if (await Permission.camera.request().isGranted) {
+    //   setState(() {
+    //     _isGranted = true;
+    //   });
+    // }
   }
 
   @override

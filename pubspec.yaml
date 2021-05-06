@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.1.7
+  universal_platform: 1.0.0-nullsafety
   ai_barcode_platform_interface:
     git:
       url: https://github.com/radvansky-tomas/ai_barcode_platform_interface.git
@@ -20,6 +20,9 @@ dependencies:
     git:
       url: https://github.com/radvansky-tomas/ai_barcode_web.git
 
+dependency_overrides:
+  ai_barcode_web:
+    path: ../ai_barcode_web
 
 dev_dependencies:
   flutter_test:
@@ -27,7 +30,7 @@ dev_dependencies:
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
-`
+
 # The following section is specific to Flutter.
 flutter:
   # This section identifies this Flutter project as a plugin project.
