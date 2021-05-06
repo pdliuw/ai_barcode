@@ -10,7 +10,7 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
   }
 
   /// Barcode widget
-  Widget _barcodeCreator({BuildContext context}) {
+  Widget _barcodeCreator({required BuildContext context}) {
     TargetPlatform targetPlatform = Theme.of(context).platform;
     if (targetPlatform == TargetPlatform.android) {
       return AndroidView(
