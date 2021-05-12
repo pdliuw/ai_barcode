@@ -1,20 +1,29 @@
 name: ai_barcode
 description: Barcode generation,Barcode scanning,qrcode,qrcode generation,qrcode creator
-version: 2.1.0
+version: 3.0.0
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
-  flutter: ">=1.20.0"
+  sdk: '>=2.12.0 <3.0.0'
+  flutter: ">=2.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  meta: ^1.1.7
-  ai_barcode_platform_interface: ^2.1.0
-  ai_barcode_web: ^2.0.0
+  universal_platform: 1.0.0-nullsafety
+  ai_barcode_platform_interface:
+    git:
+      url: https://github.com/radvansky-tomas/ai_barcode_platform_interface.git
+  ai_barcode_web:
+    git:
+      url: https://github.com/radvansky-tomas/ai_barcode_web.git
+
+dependency_overrides:
+  ai_barcode_web:
+    path: ../ai_barcode_web
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

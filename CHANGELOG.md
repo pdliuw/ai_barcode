@@ -1,3 +1,7 @@
+## [3.0.0]
+
+* null safety
+
 ## [2.1.0]
 
 * improve web something

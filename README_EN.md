@@ -224,6 +224,10 @@ Complete example
 
 Seeing it here is overwhelming？[Click to see project examples](https://github.com/pdliuw/ai_barcode/tree/master/example/lib)
 
+## WEB permissions / security
+
+Access of camera stream is prohibited on unsecured network (http) except for localhost usages.
+You can add whiltelist by opening `chrome://flags` and search for `unsafely-treat-insecure-origin-as-secure`
 
 ## Thanksgiving
 
