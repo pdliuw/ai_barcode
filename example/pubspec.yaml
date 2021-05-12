@@ -3,7 +3,7 @@ description: Demonstrates how to use the ai_barcode plugin.
 publish_to: 'none'
 
 environment:
-  sdk: ">=2.7.0 <3.0.0"
+  sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
   flutter:
@@ -25,6 +25,9 @@ dependencies:
 
   # message
   ai_awesome_message: ^2.0.0
+
+  # design
+  air_design: ^2.0.0
 
 dev_dependencies:
   flutter_test:

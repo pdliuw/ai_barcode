@@ -2,8 +2,8 @@ import 'package:ai_barcode/ai_barcode.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-String _label;
-Function(String result) _resultCallback;
+late String _label;
+late Function(String result) _resultCallback;
 
 ///
 /// AppBarcodeScannerWidget
@@ -11,7 +11,7 @@ class AppBarcodeScannerWidget extends StatefulWidget {
   ///
   ///
   AppBarcodeScannerWidget.defaultStyle({
-    Function(String result) resultCallback,
+    Function(String result)? resultCallback,
     String label = '单号',
   }) {
     _resultCallback = resultCallback ?? (String result) {};
@@ -124,10 +124,10 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
 }
 
 class _BarcodeInputWidget extends StatefulWidget {
-  ValueChanged<String> _changed;
+  late ValueChanged<String> _changed;
 
   _BarcodeInputWidget.defaultStyle({
-    ValueChanged<String> changed,
+    required ValueChanged<String> changed,
   }) {
     _changed = changed;
   }
@@ -191,7 +191,7 @@ class _BarcodeScannerWidget extends StatefulWidget {
 }
 
 class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
-  ScannerController _scannerController;
+  late ScannerController _scannerController;
 
   @override
   void initState() {

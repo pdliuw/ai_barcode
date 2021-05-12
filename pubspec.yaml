@@ -12,17 +12,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  universal_platform: 1.0.0-nullsafety
-  ai_barcode_platform_interface:
-    git:
-      url: https://github.com/radvansky-tomas/ai_barcode_platform_interface.git
-  ai_barcode_web:
-    git:
-      url: https://github.com/radvansky-tomas/ai_barcode_web.git
-
-dependency_overrides:
-  ai_barcode_web:
-    path: ../ai_barcode_web
+  universal_platform: ^1.0.0-nullsafety
+  ai_barcode_platform_interface: ^3.0.0
+  ai_barcode_web: ^3.0.0
 
 dev_dependencies:
   flutter_test:

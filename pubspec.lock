@@ -4,18 +4,16 @@ packages:
   ai_barcode_platform_interface:
     dependency: "direct main"
     description:
-      path: "."
-      ref: HEAD
-      resolved-ref: af3f01be9dfea47f1bec238139dd945e0b878629
-      url: "https://github.com/radvansky-tomas/ai_barcode_platform_interface.git"
-    source: git
+      name: ai_barcode_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.0.0"
   ai_barcode_web:
     dependency: "direct main"
     description:
-      path: "../ai_barcode_web"
-      relative: true
-    source: path
+      name: ai_barcode_web
+      url: "https://pub.dartlang.org"
+    source: hosted
     version: "3.0.0"
   async:
     dependency: transitive
@@ -155,7 +153,7 @@ packages:
       name: source_span
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.8.1"
+    version: "1.8.0"
   stack_trace:
     dependency: transitive
     description:
@@ -190,7 +188,7 @@ packages:
       name: test_api
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.3.0"
+    version: "0.2.19"
   typed_data:
     dependency: transitive
     description:
