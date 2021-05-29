@@ -20,7 +20,7 @@ class _TestingState extends State<TestingPage> {
       //关闭识别
       _scannerController?.stopCameraPreview();
       //提示信息
-      Airoute.push(
+      Airoute.push<Object>(
         route: AwesomeMessageRoute(
           awesomeMessage: AwesomeHelper.createAwesome(
               title: "Detect result", message: "$result"),
