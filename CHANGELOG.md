@@ -1,3 +1,7 @@
+## [3.0.1]
+
+* improve: website running on mobile browser
+
 ## [3.0.0]
 
 * null safety
