@@ -7,12 +7,9 @@
 |[English Document](https://github.com/pdliuw/ai_barcode/blob/master/README_EN.md)|[中文文档](https://github.com/pdliuw/ai_barcode)|
 |:-|:-|
 
-ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识别与生成
+ai_barcode:支持Android和IOS识别'一维条码'和'二维条码'的识别与生成
 
-| Plugin | Pub | Points | Popularity | Likes |
-|-----|-----|--------|------------|-------|
-|[ai_barcode](https://github.com/pdliuw/ai_barcode)|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
-
+[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
 亮点: ``ai_barcode:支持在flutter页面中嵌入Scanner以此来应对多变的业务需求``
 
@@ -28,11 +25,10 @@ ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识�
 |![ios](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_ios.gif)|![android](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_android.gif)|
 |:-|:-|
 
-|Web-Creator|Web-Scanner|
+|Web-Creator|MacOS-Creator|
 |:-|:-|
-|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_scanner_web.gif)|
+|![web](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_web.gif)|![macOS](https://github.com/pdliuw/ai_barcode/blob/master/example/gif/flutter_creator_macos.gif)|
 |:-|:-|
-
 
 [ai_barcode](https://github.com/pdliuw/ai_barcode) 在[项目](https://github.com/flutter-app-sample/flutter_app_sample)中的实战应用[flutter sample](https://github.com/flutter-app-sample/flutter_app_sample)
 
@@ -47,9 +43,7 @@ ai_barcode:支持Android、iOS、web识别'一维条码'和'二维条码'的识�
 
 在文件 'pubspec.yaml' 中添加
 
-| Plugin | Pub | Points | Popularity | Likes |
-|-----|-----|--------|------------|-------|
-|[ai_barcode](https://github.com/pdliuw/ai_barcode)|[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)|[![pub points](https://badges.bar/ai_barcode/pub%20points)](https://pub.dev/packages/ai_barcode/score)|[![popularity](https://badges.bar/ai_barcode/popularity)](https://pub.dev/packages/ai_barcode/score)|[![likes](https://badges.bar/ai_barcode/likes)](https://pub.dev/packages/ai_barcode/score)|
+[![pub package](https://img.shields.io/pub/v/ai_barcode.svg)](https://pub.dev/packages/ai_barcode)
 
 ```
 

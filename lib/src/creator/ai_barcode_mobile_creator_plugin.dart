@@ -1,7 +1,6 @@
 import 'package:ai_barcode_platform_interface/ai_barcode_platform_interface.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:universal_platform/universal_platform.dart';
 
 /// AiBarcodeMobileCreatorPlugin
 class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
@@ -11,8 +10,9 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
   }
 
   /// Barcode widget
-  Widget _barcodeCreator({required BuildContext context}) {
-    if (UniversalPlatform.isAndroid) {
+  Widget _barcodeCreator({BuildContext context}) {
+    TargetPlatform targetPlatform = Theme.of(context).platform;
+    if (targetPlatform == TargetPlatform.android) {
       return AndroidView(
         viewType: AiBarcodePlatform.viewIdOfCreator,
         creationParams: <String, dynamic>{
@@ -28,7 +28,7 @@ class AiBarcodeMobileCreatorPlugin extends AiBarcodeCreatorPlatform {
               AiBarcodeCreatorPlatform.instance.initialValueOfCreator);
         },
       );
-    } else if (UniversalPlatform.isIOS) {
+    } else if (targetPlatform == TargetPlatform.iOS) {
       return UiKitView(
         viewType: AiBarcodePlatform.viewIdOfCreator,
         creationParams: <String, dynamic>{

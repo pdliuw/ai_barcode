@@ -1,10 +1,9 @@
 import 'package:ai_barcode/ai_barcode.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-late String _label;
-late Function(String result) _resultCallback;
+String _label;
+Function(String result) _resultCallback;
 
 ///
 /// AppBarcodeScannerWidget
@@ -12,7 +11,7 @@ class AppBarcodeScannerWidget extends StatefulWidget {
   ///
   ///
   AppBarcodeScannerWidget.defaultStyle({
-    Function(String result)? resultCallback,
+    Function(String result) resultCallback,
     String label = '单号',
   }) {
     _resultCallback = resultCallback ?? (String result) {};
@@ -60,15 +59,9 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
   @override
   Widget build(BuildContext context) {
     TargetPlatform platform = Theme.of(context).platform;
-    if (!kIsWeb) {
-      if (platform == TargetPlatform.android ||
-          platform == TargetPlatform.iOS) {
-        _requestMobilePermission();
-      } else {
-        setState(() {
-          _isGranted = true;
-        });
-      }
+
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      _requestMobilePermission();
     } else {
       setState(() {
         _isGranted = true;
@@ -128,10 +121,10 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
 }
 
 class _BarcodeInputWidget extends StatefulWidget {
-  late ValueChanged<String> _changed;
+  ValueChanged<String> _changed;
 
   _BarcodeInputWidget.defaultStyle({
-    required ValueChanged<String> changed,
+    ValueChanged<String> changed,
   }) {
     _changed = changed;
   }
@@ -195,7 +188,7 @@ class _BarcodeScannerWidget extends StatefulWidget {
 }
 
 class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
-  late ScannerController _scannerController;
+  ScannerController _scannerController;
 
   @override
   void initState() {

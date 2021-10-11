@@ -11,16 +11,16 @@ class TestingPage extends StatefulWidget {
 }
 
 class _TestingState extends State<TestingPage> {
-  ScannerController? _scannerController;
+  ScannerController _scannerController;
 
   @override
   void initState() {
     super.initState();
     _scannerController = ScannerController(scannerResult: (result) {
       //关闭识别
-      _scannerController?.stopCameraPreview();
+      _scannerController.stopCameraPreview();
       //提示信息
-      Airoute.push<Object>(
+      Airoute.push(
         route: AwesomeMessageRoute(
           awesomeMessage: AwesomeHelper.createAwesome(
               title: "Detect result", message: "$result"),
@@ -29,7 +29,7 @@ class _TestingState extends State<TestingPage> {
         ),
       );
       //打开识别
-      _scannerController?.startCameraPreview();
+      _scannerController.startCameraPreview();
     });
   }
 
@@ -40,7 +40,7 @@ class _TestingState extends State<TestingPage> {
   }
 
   _startPreview() async {
-    String result = await _scannerController?.startCameraPreview();
+    String result = await _scannerController.startCameraPreview();
   }
 
   @override
@@ -54,7 +54,7 @@ class _TestingState extends State<TestingPage> {
           children: <Widget>[
             MaterialButton(
               onPressed: () {
-                _scannerController?.startCamera();
+                _scannerController.startCamera();
               },
               textColor: Colors.white,
               color: Colors.blue,
@@ -71,7 +71,7 @@ class _TestingState extends State<TestingPage> {
             MaterialButton(
               onPressed: () {
                 //停止相机预览
-                _scannerController?.stopCameraPreview();
+                _scannerController.stopCameraPreview();
               },
               textColor: Colors.white,
               color: Colors.blue,
@@ -80,7 +80,7 @@ class _TestingState extends State<TestingPage> {
             MaterialButton(
               onPressed: () {
                 //释放相机
-                _scannerController?.stopCamera();
+                _scannerController.stopCamera();
               },
               textColor: Colors.white,
               color: Colors.blue,
@@ -90,7 +90,7 @@ class _TestingState extends State<TestingPage> {
               width: 750,
               height: 750,
               child: PlatformAiBarcodeScannerWidget(
-                platformScannerController: _scannerController!,
+                platformScannerController: _scannerController,
               ),
             ),
           ],

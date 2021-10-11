@@ -16,8 +16,8 @@ class CreatorPage extends StatefulWidget {
 class _CreatorState extends State<CreatorPage> {
   String _qrCodeOfInput = "请输入二维码信息";
 
-  CreatorController? _creatorController;
-  TextEditingController? _textEditingController;
+  CreatorController _creatorController;
+  TextEditingController _textEditingController;
 
   @override
   void initState() {
@@ -72,7 +72,7 @@ class _CreatorState extends State<CreatorPage> {
               onPressed: () {
                 setState(() {
                   //update value
-                  _creatorController?.updateValue(
+                  _creatorController.updateValue(
                     value: _qrCodeOfInput,
                   );
                 });
@@ -99,7 +99,7 @@ class _CreatorState extends State<CreatorPage> {
                   ),
                   margin: EdgeInsets.all(40),
                   child: PlatformAiBarcodeCreatorWidget(
-                    creatorController: _creatorController!,
+                    creatorController: _creatorController,
                     initialValue: "$_qrCodeOfInput",
                   ),
                 ),

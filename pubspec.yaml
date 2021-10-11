@@ -1,21 +1,20 @@
 name: ai_barcode
-description: barcode,qrcode,scan,scanning,Barcode generation,Barcode scanning,qrcode,qrcode generation,qrcode creator
-version: 3.0.1
+description: AiBarcode supports scanner、creator the one-dimensional bar code and two-dimensional bar code(Android 、iOS), and support the Scanner embedded in Flutter pages
+version: 2.0.0
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
 
 environment:
-  sdk: '>=2.12.0 <3.0.0'
-  flutter: ">=2.0.0"
+  sdk: ">=2.7.0 <3.0.0"
+  flutter: ">=1.20.0"
 
 dependencies:
   flutter:
     sdk: flutter
-  universal_platform: ^1.0.0-nullsafety
-  ai_barcode_platform_interface: ^3.0.0
-  ai_barcode_web: ^3.0.0
-
+  meta: ^1.1.7
+  ai_barcode_platform_interface: ^2.1.0
+  ai_barcode_web: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter

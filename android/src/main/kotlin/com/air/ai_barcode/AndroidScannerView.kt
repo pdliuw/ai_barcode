@@ -99,7 +99,7 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, vie
     }
 
     private fun startCamera() {
-        zxing.startCamera();
+        zxing.startCamera(1);
     }
 
     private fun stopCamera() {

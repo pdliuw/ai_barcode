@@ -1,9 +1,7 @@
 import 'package:ai_barcode/src/creator/ai_barcode_mobile_creator_plugin.dart';
 import 'package:ai_barcode/src/scanner/ai_barcode_mobile_scanner_plugin.dart';
 import 'package:ai_barcode_platform_interface/ai_barcode_platform_interface.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:universal_platform/universal_platform.dart';
 
 ///
 /// PlatformScannerWidget
@@ -13,17 +11,17 @@ import 'package:universal_platform/universal_platform.dart';
 class PlatformAiBarcodeScannerWidget extends StatefulWidget {
   ///
   /// Controller.
-  late ScannerController _platformScannerController;
+  ScannerController _platformScannerController;
 
   ///
   /// UnsupportedDescription
-  String? _unsupportedDescription;
+  String _unsupportedDescription;
 
   ///
   /// Constructor.
   PlatformAiBarcodeScannerWidget({
-    required ScannerController platformScannerController,
-    String? unsupportedDescription,
+    @required ScannerController platformScannerController,
+    String unsupportedDescription,
   }) {
     _platformScannerController = platformScannerController;
     _unsupportedDescription = unsupportedDescription;
@@ -49,18 +47,22 @@ class _PlatformScannerWidgetState
   ///
   /// CreatedListener.
   _widgetCreatedListener() {
-    if (widget._platformScannerController._scannerViewCreated != null) {
-      widget._platformScannerController._scannerViewCreated!();
+    if (widget._platformScannerController != null) {
+      if (widget._platformScannerController._scannerViewCreated != null) {
+        widget._platformScannerController._scannerViewCreated();
+      }
     }
   }
 
   ///
   /// Web result callback
   void _webResultCallback(String result) {
-    //if (widget._platformScannerController._scannerResult != null) {
-    //callback
-    widget._platformScannerController._scannerResult(result);
-    //}
+    if (widget._platformScannerController != null) {
+      if (widget._platformScannerController._scannerResult != null) {
+        //callback
+        widget._platformScannerController._scannerResult(result);
+      }
+    }
   }
 
   @override
@@ -73,10 +75,9 @@ class _PlatformScannerWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (!kIsWeb) {
-      if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
-        AiBarcodeScannerPlatform.instance = AiBarcodeMobileScannerPlugin();
-      }
+    TargetPlatform platform = Theme.of(context).platform;
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      AiBarcodeScannerPlatform.instance = AiBarcodeMobileScannerPlugin();
     }
     //Create
     AiBarcodeScannerPlatform.instance.addListener(_widgetCreatedListener);
@@ -92,20 +93,20 @@ class _PlatformScannerWidgetState
 class ScannerController {
   ///
   /// Result
-  late Function(String result) _scannerResult;
-  Function()? _scannerViewCreated;
+  Function(String result) _scannerResult;
+  Function() _scannerViewCreated;
 
   ///
   /// Constructor.
   ScannerController({
-    required scannerResult(String result),
-    scannerViewCreated,
+    @required scannerResult(String result),
+    scannerViewCreated(),
   }) {
     _scannerResult = scannerResult;
     _scannerViewCreated = scannerViewCreated;
   }
 
-  Function()? get scannerViewCreated => _scannerViewCreated;
+  Function() get scannerViewCreated => _scannerViewCreated;
 
   bool get isStartCamera => AiBarcodeScannerPlatform.instance.isStartCamera;
   bool get isStartCameraPreview =>
@@ -163,14 +164,13 @@ class ScannerController {
 /// Supported android and ios write barcode
 // ignore: must_be_immutable
 class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
-  late CreatorController _creatorController;
-  late String _initialValue;
-  String? _unsupportedDescription;
-
+  CreatorController _creatorController;
+  String _initialValue;
+  String _unsupportedDescription;
   PlatformAiBarcodeCreatorWidget({
-    required CreatorController creatorController,
-    required String initialValue,
-    String? unsupportedDescription,
+    @required CreatorController creatorController,
+    @required String initialValue,
+    String unsupportedDescription,
   }) {
     _creatorController = creatorController;
     _initialValue = initialValue;
@@ -192,8 +192,9 @@ class _PlatformAiBarcodeCreatorState
   }
 
   _creatorCreatedCallback() {
-    if (widget._creatorController._creatorViewCreated != null) {
-      widget._creatorController._creatorViewCreated!();
+    if (widget._creatorController != null &&
+        widget._creatorController._creatorViewCreated != null) {
+      widget._creatorController._creatorViewCreated();
     }
   }
 
@@ -206,10 +207,9 @@ class _PlatformAiBarcodeCreatorState
 
   @override
   Widget build(BuildContext context) {
-    if (!kIsWeb) {
-      if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
-        AiBarcodeCreatorPlatform.instance = AiBarcodeMobileCreatorPlugin();
-      }
+    TargetPlatform platform = Theme.of(context).platform;
+    if (platform == TargetPlatform.android || platform == TargetPlatform.iOS) {
+      AiBarcodeCreatorPlatform.instance = AiBarcodeMobileCreatorPlugin();
     }
     //create
     AiBarcodeCreatorPlatform.instance.unsupportedPlatformDescription =
@@ -224,16 +224,16 @@ class _PlatformAiBarcodeCreatorState
 ///
 /// CreatorController
 class CreatorController {
-  Function()? _creatorViewCreated;
+  Function() _creatorViewCreated;
 
   CreatorController({
-    Function()? creatorViewCreated,
+    Function() creatorViewCreated,
   }) {
     _creatorViewCreated = creatorViewCreated;
   }
 
   void updateValue({
-    required String value,
+    @required String value,
   }) {
     AiBarcodeCreatorPlatform.instance.updateQRCodeValue(value);
   }
