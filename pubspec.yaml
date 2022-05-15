@@ -1,6 +1,6 @@
 name: ai_barcode
 description: barcode,qrcode,scan,scanning,Barcode generation,Barcode scanning,qrcode,qrcode generation,qrcode creator
-version: 3.0.1
+version: 3.0.2
 homepage: https://pdliuw.github.io/
 repository: https://github.com/pdliuw/ai_barcode
 
@@ -19,7 +19,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  flutter_lints: ^2.0.1
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
