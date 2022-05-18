@@ -29,7 +29,7 @@ import java.util.*
  * Create QRCode view
  * </p>
  */
-class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
+class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context?, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
     /**
      * 用于向Flutter发送数据
      */

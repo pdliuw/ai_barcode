@@ -17,7 +17,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView
  * Created by air on 2019-12-02.
  * </p>
  */
-class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, ZXingScannerView.ResultHandler {
+class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context?, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, ZXingScannerView.ResultHandler {
     /**
      * 用于向Flutter发送数据
      */

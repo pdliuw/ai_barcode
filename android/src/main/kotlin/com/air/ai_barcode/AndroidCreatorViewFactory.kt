@@ -13,7 +13,7 @@ import io.flutter.plugin.platform.PlatformViewFactory
  */
 class AndroidCreatorViewFactory(private var binaryMessenger: BinaryMessenger) : PlatformViewFactory(StandardMessageCodec.INSTANCE) {
 
-    override fun create(context: Context, viewId: Int, args: Any?): PlatformView {
+    override fun create(context: Context?, viewId: Int, args: Any?): PlatformView {
         return AndroidCreatorView(binaryMessenger, context, viewId, args);
     }
 }
