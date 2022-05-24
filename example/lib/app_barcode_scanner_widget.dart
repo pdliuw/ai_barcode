@@ -87,7 +87,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                       },
                     )
               : Center(
-                  child: OutlineButton(
+                  child: OutlinedButton(
                     onPressed: () {
                       _requestMobilePermission();
                     },
@@ -96,7 +96,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                 ),
         ),
         _useCameraScan
-            ? OutlineButton(
+            ? OutlinedButton(
                 onPressed: () {
                   setState(() {
                     _useCameraScan = false;
@@ -106,7 +106,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
               )
             : Row(
                 children: [
-                  OutlineButton(
+                  OutlinedButton(
                     onPressed: () {
                       setState(() {
                         _useCameraScan = true;
@@ -114,7 +114,7 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                     },
                     child: Text("扫描$_label"),
                   ),
-                  OutlineButton(
+                  OutlinedButton(
                     onPressed: () {
                       _resultCallback(_inputValue);
                     },

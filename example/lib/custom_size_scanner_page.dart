@@ -1,5 +1,4 @@
 import 'package:ai_barcode_example/app_barcode_scanner_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 ///

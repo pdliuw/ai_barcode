@@ -81,7 +81,7 @@
                           },
                         )
                   : Center(
-                      child: OutlineButton(
+                      child: OutlinedButton(
                         onPressed: () {
                           _requestPermission();
                         },
@@ -90,7 +90,7 @@
                     ),
             ),
             _useCameraScan
-                ? OutlineButton(
+                ? OutlinedButton(
                     onPressed: () {
                       setState(() {
                         _useCameraScan = false;
@@ -100,7 +100,7 @@
                   )
                 : Row(
                     children: [
-                      OutlineButton(
+                      OutlinedButton(
                         onPressed: () {
                           setState(() {
                             _useCameraScan = true;
@@ -108,7 +108,7 @@
                         },
                         child: Text("扫描$_label"),
                       ),
-                      OutlineButton(
+                      OutlinedButton(
                         onPressed: () {
                           _resultCallback(_inputValue);
                         },
