@@ -1,9 +1,10 @@
+import 'dart:io';
+
 import 'package:ai_barcode/src/creator/ai_barcode_mobile_creator_plugin.dart';
 import 'package:ai_barcode/src/scanner/ai_barcode_mobile_scanner_plugin.dart';
 import 'package:ai_barcode_platform_interface/ai_barcode_platform_interface.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:universal_platform/universal_platform.dart';
 
 ///
 /// PlatformScannerWidget
@@ -74,7 +75,7 @@ class _PlatformScannerWidgetState
   @override
   Widget build(BuildContext context) {
     if (!kIsWeb) {
-      if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
+      if (Platform.isAndroid || Platform.isIOS) {
         AiBarcodeScannerPlatform.instance = AiBarcodeMobileScannerPlugin();
       }
     }
@@ -207,7 +208,7 @@ class _PlatformAiBarcodeCreatorState
   @override
   Widget build(BuildContext context) {
     if (!kIsWeb) {
-      if (UniversalPlatform.isAndroid || UniversalPlatform.isIOS) {
+      if (Platform.isAndroid || Platform.isIOS) {
         AiBarcodeCreatorPlatform.instance = AiBarcodeMobileCreatorPlugin();
       }
     }

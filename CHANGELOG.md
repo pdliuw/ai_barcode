@@ -1,3 +1,9 @@
+## [3.1.0]
+
+* Flutter 3.0.1
+* Dart 2.17.1
+
+
 ## [3.0.1]
 
 * improve: website running on mobile browser
