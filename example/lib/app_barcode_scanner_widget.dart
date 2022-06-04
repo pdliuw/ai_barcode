@@ -9,11 +9,14 @@ late Function(String result) _resultCallback;
 ///
 /// AppBarcodeScannerWidget
 class AppBarcodeScannerWidget extends StatefulWidget {
+  final bool openManual;
+
   ///
   ///
   AppBarcodeScannerWidget.defaultStyle({
     Function(String result)? resultCallback,
-    String label = '单号',
+    this.openManual = false,
+    String label = '',
   }) {
     _resultCallback = resultCallback ?? (String result) {};
     _label = label;
@@ -24,29 +27,37 @@ class AppBarcodeScannerWidget extends StatefulWidget {
 }
 
 class _AppBarcodeState extends State<AppBarcodeScannerWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return _BarcodePermissionWidget();
-  }
-}
-
-class _BarcodePermissionWidget extends StatefulWidget {
-  @override
-  State<StatefulWidget> createState() {
-    return _BarcodePermissionWidgetState();
-  }
-}
-
-class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
   bool _isGranted = false;
 
   bool _useCameraScan = true;
+
+  bool _openManual = false;
 
   String _inputValue = "";
 
   @override
   void initState() {
     super.initState();
+
+    _openManual = widget.openManual;
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      TargetPlatform platform = Theme.of(context).platform;
+      if (!kIsWeb) {
+        if (platform == TargetPlatform.android ||
+            platform == TargetPlatform.iOS) {
+          _requestMobilePermission();
+        } else {
+          setState(() {
+            _isGranted = true;
+          });
+        }
+      } else {
+        setState(() {
+          _isGranted = true;
+        });
+      }
+    });
   }
 
   void _requestMobilePermission() async {
@@ -59,22 +70,6 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
 
   @override
   Widget build(BuildContext context) {
-    TargetPlatform platform = Theme.of(context).platform;
-    if (!kIsWeb) {
-      if (platform == TargetPlatform.android ||
-          platform == TargetPlatform.iOS) {
-        _requestMobilePermission();
-      } else {
-        setState(() {
-          _isGranted = true;
-        });
-      }
-    } else {
-      setState(() {
-        _isGranted = true;
-      });
-    }
-
     return Column(
       children: <Widget>[
         Expanded(
@@ -95,33 +90,35 @@ class _BarcodePermissionWidgetState extends State<_BarcodePermissionWidget> {
                   ),
                 ),
         ),
-        _useCameraScan
-            ? OutlinedButton(
-                onPressed: () {
-                  setState(() {
-                    _useCameraScan = false;
-                  });
-                },
-                child: Text("手动输入$_label"),
-              )
-            : Row(
-                children: [
-                  OutlinedButton(
+        _openManual
+            ? _useCameraScan
+                ? OutlinedButton(
                     onPressed: () {
                       setState(() {
-                        _useCameraScan = true;
+                        _useCameraScan = false;
                       });
                     },
-                    child: Text("扫描$_label"),
-                  ),
-                  OutlinedButton(
-                    onPressed: () {
-                      _resultCallback(_inputValue);
-                    },
-                    child: Text("确定"),
-                  ),
-                ],
-              ),
+                    child: Text("手动输入$_label"),
+                  )
+                : Row(
+                    children: [
+                      OutlinedButton(
+                        onPressed: () {
+                          setState(() {
+                            _useCameraScan = true;
+                          });
+                        },
+                        child: Text("扫描$_label"),
+                      ),
+                      OutlinedButton(
+                        onPressed: () {
+                          _resultCallback(_inputValue);
+                        },
+                        child: Text("确定"),
+                      ),
+                    ],
+                  )
+            : Container(),
       ],
     );
   }
@@ -202,6 +199,8 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
     super.initState();
 
     _scannerController = ScannerController(scannerResult: (result) {
+      _scannerController.stopCameraPreview();
+
       _resultCallback(result);
     }, scannerViewCreated: () {
       TargetPlatform platform = Theme.of(context).platform;

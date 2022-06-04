@@ -6,7 +6,7 @@ buildscript {
     ext.android_gradle_version = '7.2.0'
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
 
     dependencies {
@@ -18,8 +18,7 @@ buildscript {
 rootProject.allprojects {
     repositories {
         google()
-        // mavenCentral()
-        jcenter()
+        mavenCentral()
     }
 }
 
@@ -30,6 +29,9 @@ android {
     compileSdkVersion 31
 
     compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -43,11 +45,16 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 16
+        multiDexEnabled true
+        minSdkVersion 19
     }
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'me.dm7.barcodescanner:zxing:1.9.13'    
+
+    implementation 'com.journeyapps:zxing-android-embedded:4.3.0'
+
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+    implementation "androidx.multidex:multidex:2.0.1"
 }

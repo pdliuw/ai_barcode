@@ -10,18 +10,15 @@ class FullScreenScannerPage extends StatefulWidget {
 
 class _FullScreenScannerPageState extends State<FullScreenScannerPage> {
   String _code = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text("$_code"),
+      ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text("「$_code」"),
-            ],
-          ),
           Expanded(
             child: AppBarcodeScannerWidget.defaultStyle(
               resultCallback: (String code) {
@@ -29,6 +26,7 @@ class _FullScreenScannerPageState extends State<FullScreenScannerPage> {
                   _code = code;
                 });
               },
+              openManual: false,
             ),
           ),
         ],

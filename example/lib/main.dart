@@ -1,7 +1,6 @@
 import 'package:ai_barcode_example/full_screen_scanner_page.dart';
 import 'package:ai_barcode_example/task_next_page.dart';
-import 'package:ai_barcode_example/testing_page.dart';
-import 'package:air_design/air_design.dart';
+
 import 'package:airoute/airoute.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +17,6 @@ void main() => runApp(
           "/FullScreenScannerPage": (_) => FullScreenScannerPage(),
           "/TaskNextPage": (_) => TaskNextPage(),
           "/CreatorPage": (_) => CreatorPage(),
-          "/TestingPage": (_) => TestingPage(),
         },
       ),
     );
@@ -46,43 +44,39 @@ class _AppState extends State<App> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Expanded(
-              child: AppCardOutlinedStyleWidget.defaultStyle(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      onPressed: () {
-                        //跳转页面=扫描二维码
-                        Airoute.pushNamed(
-                          routeName: "/SelectScannerStylePage",
-                        );
-                      },
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text("Scan 1D barcode/QR code"),
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(
+                    onPressed: () {
+                      //跳转页面=扫描二维码
+                      Airoute.pushNamed(
+                        routeName: "/SelectScannerStylePage",
+                      );
+                    },
+                    textColor: Colors.white,
+                    color: Colors.blue,
+                    child: Text("Scan 1D barcode/QR code"),
+                  ),
+                ],
               ),
             ),
             Expanded(
-              child: AppCardOutlinedStyleWidget.defaultStyle(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    MaterialButton(
-                      onPressed: () {
-                        //跳转页面=生成二维码
-                        Airoute.pushNamed(
-                          routeName: "/CreatorPage",
-                        );
-                      },
-                      textColor: Colors.white,
-                      color: Colors.blue,
-                      child: Text("Create QR code"),
-                    ),
-                  ],
-                ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  MaterialButton(
+                    onPressed: () {
+                      //跳转页面=生成二维码
+                      Airoute.pushNamed(
+                        routeName: "/CreatorPage",
+                      );
+                    },
+                    textColor: Colors.white,
+                    color: Colors.blue,
+                    child: Text("Create QR code"),
+                  ),
+                ],
               ),
             ),
           ],

@@ -10,26 +10,29 @@ class CustomSizeScannerPage extends StatefulWidget {
 
 class _CustomSizeScannerPageState extends State<CustomSizeScannerPage> {
   String _code = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(_code),
+      ),
       body: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(_code),
-            ],
-          ),
           Expanded(
+            flex: 4,
             child: AppBarcodeScannerWidget.defaultStyle(
               resultCallback: (String code) {
                 setState(() {
                   _code = code;
                 });
               },
+              openManual: true,
             ),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(),
           ),
         ],
       ),

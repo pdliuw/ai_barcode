@@ -4,20 +4,28 @@ import android.content.Context
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import com.google.zxing.Result
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.ResultPoint
+import com.journeyapps.barcodescanner.*
 import io.flutter.plugin.common.BinaryMessenger
 import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
-import me.dm7.barcodescanner.zxing.ZXingScannerView
+
 
 /**
  * <p>
  * Created by air on 2019-12-02.
  * </p>
  */
-class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context?, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, ZXingScannerView.ResultHandler {
+class AndroidScannerView(
+    binaryMessenger: BinaryMessenger,
+    context: Context?,
+    viewid: Int,
+    args: Any?
+) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, BarcodeCallback {
+
     /**
      * 用于向Flutter发送数据
      */
@@ -29,13 +37,24 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context?, vi
     override fun onCancel(arguments: Any?) {
     }
 
-    /**
-     * 识别二维码结果
-     */
-    override fun handleResult(rawResult: Result?) {
 
-        this.channelResult.success("${rawResult?.toString()}");
-//        this.eventChannelSink?.success("${rawResult?.toString()}")
+    override fun barcodeResult(result: BarcodeResult?) {
+
+        if (result == null) {
+            return;
+        }
+        if (result.text == null || result.text == mLastText) {
+            // Prevent duplicate scans
+            return
+        }
+
+        mLastText = result.text
+
+        this.channelResult.success(result.text.toString());
+    }
+
+    override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) {
+        super.possibleResultPoints(resultPoints)
     }
 
     /**
@@ -59,34 +78,56 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context?, vi
     /**
      * 二维码扫描组件
      */
-    var zxing: ZXingScannerView = ZXingScannerView(context);
-    var linear: LinearLayout = LinearLayout(context);
-    var textView: TextView = TextView(context);
+    var mContext: Context? = context;
+    var mZXingBarcode: DecoratedBarcodeView = DecoratedBarcodeView(context);
+
+
+    var mTextView: TextView = TextView(context);
+    var mLastText: String = "";
 
 
     lateinit var channelResult: MethodChannel.Result;
     var eventChannelSink: EventChannel.EventSink? = null;
 
     init {
-        textView.setText("Scanner view");
+        mTextView.text = "Scanner view";
         /*
         MethodChannel
          */
-        var methodChannel: MethodChannel = MethodChannel(binaryMessenger, "view_type_id_scanner_view_method_channel");
+        val methodChannel: MethodChannel =
+            MethodChannel(binaryMessenger, "view_type_id_scanner_view_method_channel");
         methodChannel.setMethodCallHandler(this);
         /*
         EventChannel
          */
-        var eventChannel: EventChannel = EventChannel(binaryMessenger, "view_type_id_scanner_view_event_channel");
+        val eventChannel: EventChannel =
+            EventChannel(binaryMessenger, "view_type_id_scanner_view_event_channel");
         eventChannel.setStreamHandler(this);
     }
 
     override fun getView(): View {
 
+        val formats: Collection<BarcodeFormat> =
+            listOf(
+                BarcodeFormat.UPC_A,
+                BarcodeFormat.UPC_E,
+                BarcodeFormat.EAN_8,
+                BarcodeFormat.EAN_13,
+                BarcodeFormat.RSS_14,
+                BarcodeFormat.CODE_39,
+                BarcodeFormat.CODE_93,
+                BarcodeFormat.CODE_128,
+                BarcodeFormat.ITF,
+                BarcodeFormat.RSS_EXPANDED,
+                BarcodeFormat.QR_CODE,
+                BarcodeFormat.CODABAR,
+            )
+        mZXingBarcode.barcodeView.decoderFactory = DefaultDecoderFactory(formats)
+        mZXingBarcode.setStatusText("")
+        mZXingBarcode.decodeContinuous(this)
 
-        zxing.setAutoFocus(true);
-        zxing.setAspectTolerance(0.5f);
-        return zxing;
+
+        return mZXingBarcode;
     }
 
     override fun dispose() {
@@ -99,30 +140,30 @@ class AndroidScannerView(binaryMessenger: BinaryMessenger, context: Context?, vi
     }
 
     private fun startCamera() {
-        zxing.startCamera();
+        mZXingBarcode.pauseAndWait();
     }
 
     private fun stopCamera() {
-        zxing.stopCamera();
+        mZXingBarcode.pause();
     }
 
     private fun resumeCameraPreview() {
-        zxing.resumeCameraPreview(this);
+        mZXingBarcode.resume()
     }
 
     private fun stopCameraPreview() {
-        zxing.stopCameraPreview();
+        mZXingBarcode.pauseAndWait();
     }
 
     private fun openFlash() {
-        zxing.flash = true;
+//        zxing.flash = true;
     }
 
     private fun closeFlash() {
-        zxing.flash = false;
+//        zxing.flash = false;
     }
 
     private fun toggleFlash() {
-        zxing.toggleFlash();
+//        zxing.toggleFlash();
     }
 }

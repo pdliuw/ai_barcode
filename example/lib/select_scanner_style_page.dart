@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:airoute/airoute.dart';
+import 'package:flutter/material.dart';
 
 ///
 /// SelectScannerStylePage
@@ -25,19 +25,18 @@ class _SelectScannerStyleState extends State<SelectScannerStylePage> {
           Column(
             children: <Widget>[
               Spacer(),
-              RaisedButton(
+              ElevatedButton(
                 onPressed: () {
                   Airoute.pushNamed(routeName: "/FullScreenScannerPage");
                 },
                 child: Text("FullScreen Style"),
-                textTheme: ButtonTextTheme.accent,
               ),
-              RaisedButton(
+              Spacer(),
+              ElevatedButton(
                 onPressed: () {
                   Airoute.pushNamed(routeName: "/CustomSizeScannerPage");
                 },
                 child: Text("CustomSize Style"),
-                textTheme: ButtonTextTheme.accent,
               ),
               Spacer(),
             ],

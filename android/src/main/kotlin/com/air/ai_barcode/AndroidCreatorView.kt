@@ -17,7 +17,7 @@ import io.flutter.plugin.common.EventChannel
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.platform.PlatformView
-import me.dm7.barcodescanner.zxing.ZXingScannerView
+
 import java.util.*
 
 
@@ -29,7 +29,12 @@ import java.util.*
  * Create QRCode view
  * </p>
  */
-class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context?, viewid: Int, args: Any?) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
+class AndroidCreatorView(
+    binaryMessenger: BinaryMessenger,
+    context: Context?,
+    viewid: Int,
+    args: Any?
+) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler {
     /**
      * 用于向Flutter发送数据
      */
@@ -74,12 +79,14 @@ class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context?, vi
         /*
         MethodChannel
          */
-        var methodChannel: MethodChannel = MethodChannel(binaryMessenger, "view_type_id_creator_view_method_channel");
+        var methodChannel: MethodChannel =
+            MethodChannel(binaryMessenger, "view_type_id_creator_view_method_channel");
         methodChannel.setMethodCallHandler(this);
         /*
         EventChannel
          */
-        var eventChannel: EventChannel = EventChannel(binaryMessenger, "view_type_id_creator_view_event_channel");
+        var eventChannel: EventChannel =
+            EventChannel(binaryMessenger, "view_type_id_creator_view_event_channel");
         eventChannel.setStreamHandler(this);
     }
 
@@ -113,7 +120,7 @@ class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context?, vi
 
 
     private fun createQRImage(
-            content: String?, widthPix: Int, heightPix: Int
+        content: String?, widthPix: Int, heightPix: Int
     ): Bitmap? {
         try {
             val hints = HashMap<EncodeHintType, Any>()
@@ -123,8 +130,8 @@ class AndroidCreatorView(binaryMessenger: BinaryMessenger, context: Context?, vi
             var bitMatrix: BitMatrix? = null
             try {
                 bitMatrix = QRCodeWriter().encode(
-                        content, BarcodeFormat.QR_CODE, widthPix,
-                        heightPix, hints
+                    content, BarcodeFormat.QR_CODE, widthPix,
+                    heightPix, hints
                 )
             } catch (e: WriterException) {
 
