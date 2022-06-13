@@ -199,8 +199,6 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
     super.initState();
 
     _scannerController = ScannerController(scannerResult: (result) {
-      _scannerController.stopCameraPreview();
-
       _resultCallback(result);
     }, scannerViewCreated: () {
       TargetPlatform platform = Theme.of(context).platform;

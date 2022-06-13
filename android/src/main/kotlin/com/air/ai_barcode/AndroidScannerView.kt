@@ -2,7 +2,6 @@ package com.air.ai_barcode
 
 import android.content.Context
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
@@ -30,11 +29,11 @@ class AndroidScannerView(
      * 用于向Flutter发送数据
      */
     override fun onListen(arguments: Any?, events: EventChannel.EventSink?) {
-        this.eventChannelSink = events;
-        this.eventChannelSink?.success("onListen");
+        this.mEventChannelSink = events;
     }
 
     override fun onCancel(arguments: Any?) {
+        this.mEventChannelSink?.endOfStream();
     }
 
 
@@ -50,7 +49,7 @@ class AndroidScannerView(
 
         mLastText = result.text
 
-        this.channelResult.success(result.text.toString());
+        this.mEventChannelSink?.success(result.text.toString());
     }
 
     override fun possibleResultPoints(resultPoints: MutableList<ResultPoint>?) {
@@ -87,7 +86,7 @@ class AndroidScannerView(
 
 
     lateinit var channelResult: MethodChannel.Result;
-    var eventChannelSink: EventChannel.EventSink? = null;
+    var mEventChannelSink: EventChannel.EventSink? = null;
 
     init {
         mTextView.text = "Scanner view";

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:ai_barcode/src/creator/ai_barcode_mobile_creator_plugin.dart';
@@ -40,7 +41,7 @@ class PlatformAiBarcodeScannerWidget extends StatefulWidget {
 /// _PlatformScannerWidgetState
 class _PlatformScannerWidgetState
     extends State<PlatformAiBarcodeScannerWidget> {
-//  StreamSubscription _streamSubscription;
+  StreamSubscription? _streamSubscription;
 
   @override
   void initState() {
@@ -52,7 +53,16 @@ class _PlatformScannerWidgetState
   _widgetCreatedListener() {
     if (widget._platformScannerController._scannerViewCreated != null) {
       widget._platformScannerController._scannerViewCreated!();
+      _streamSubscription = AiBarcodeScannerPlatform.instance
+          .receiveBarcodeResult()
+          .listen((event) {
+        _receiveBarcodeResultCallback("$event");
+      });
     }
+  }
+
+  void _receiveBarcodeResultCallback(String result) {
+    widget._platformScannerController._scannerResult(result);
   }
 
   ///
@@ -60,13 +70,14 @@ class _PlatformScannerWidgetState
   void _webResultCallback(String result) {
     //if (widget._platformScannerController._scannerResult != null) {
     //callback
-    widget._platformScannerController._scannerResult(result);
+    // widget._platformScannerController._scannerResult(result);
     //}
   }
 
   @override
   void dispose() {
     super.dispose();
+    _streamSubscription?.cancel();
     //Release
     AiBarcodeScannerPlatform.instance.removeListener(_widgetCreatedListener);
     AiBarcodeScannerPlatform.instance.removeResultCallback(_webResultCallback);
@@ -109,6 +120,7 @@ class ScannerController {
   Function()? get scannerViewCreated => _scannerViewCreated;
 
   bool get isStartCamera => AiBarcodeScannerPlatform.instance.isStartCamera;
+
   bool get isStartCameraPreview =>
       AiBarcodeScannerPlatform.instance.isStartCameraPreview;
 
@@ -177,6 +189,7 @@ class PlatformAiBarcodeCreatorWidget extends StatefulWidget {
     _initialValue = initialValue;
     _unsupportedDescription = unsupportedDescription;
   }
+
   @override
   State<StatefulWidget> createState() {
     return _PlatformAiBarcodeCreatorState();
