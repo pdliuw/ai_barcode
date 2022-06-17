@@ -234,7 +234,7 @@ You can add whiltelist by opening `chrome://flags` and search for `unsafely-trea
 
 |iOS-Barcode/QRCode Scanner/Creator|Android-Barcode/QRCode Scanner/Creator|Web、MacOS-QrCode Creator|
 |:-|:-|:-|
-|[Built on: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[Built on: dm77/barcodescanner](https://github.com/dm77/barcodescanner)|[Built on: qr_flutter](https://github.com/lukef/qr.flutter)|
+|[Built on: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[Built on: zxing](https://github.com/zxing/zxing)|[Built on: qr_flutter](https://github.com/lukef/qr.flutter)|
 |:-|:-|:-|
 
 ## TODO

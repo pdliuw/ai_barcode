@@ -1,3 +1,8 @@
+## [3.2.2]
+
+* fix  something
+* improve something
+
 ## [3.2.1]
 
 * fix  something

@@ -248,7 +248,7 @@ iOS支持PlatformView配置：
 
 |iOS-一维码/二维码 识别/生成|Android-一维码/二维码 识别/生成|Web、MacOS-二维码 生成|
 |:-|:-|:-|
-|[基于: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[基于: dm77/barcodescanner](https://github.com/dm77/barcodescanner)|[基于: qr_flutter](https://github.com/lukef/qr.flutter)|
+|[基于: MTBBarcodeScanner](https://github.com/mikebuss/MTBBarcodeScanner)|[基于: zxing](https://github.com/zxing/zxing)|[基于: qr_flutter](https://github.com/lukef/qr.flutter)|
 |:-|:-|:-|
 
 ## 待办

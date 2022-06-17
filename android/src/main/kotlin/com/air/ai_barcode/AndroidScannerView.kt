@@ -23,7 +23,8 @@ class AndroidScannerView(
     context: Context?,
     viewid: Int,
     args: Any?
-) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, BarcodeCallback {
+) : PlatformView, MethodChannel.MethodCallHandler, EventChannel.StreamHandler, BarcodeCallback,
+    DecoratedBarcodeView.TorchListener {
 
     /**
      * 用于向Flutter发送数据
@@ -88,6 +89,8 @@ class AndroidScannerView(
     lateinit var channelResult: MethodChannel.Result;
     var mEventChannelSink: EventChannel.EventSink? = null;
 
+    var mTorchOn: Boolean = false
+
     init {
         mTextView.text = "Scanner view";
         /*
@@ -124,6 +127,7 @@ class AndroidScannerView(
         mZXingBarcode.barcodeView.decoderFactory = DefaultDecoderFactory(formats)
         mZXingBarcode.setStatusText("")
         mZXingBarcode.decodeContinuous(this)
+        mZXingBarcode.setTorchListener(this)
 
 
         return mZXingBarcode;
@@ -155,14 +159,26 @@ class AndroidScannerView(
     }
 
     private fun openFlash() {
-//        zxing.flash = true;
+        mZXingBarcode.setTorchOn()
     }
 
     private fun closeFlash() {
-//        zxing.flash = false;
+        mZXingBarcode.setTorchOff()
     }
 
     private fun toggleFlash() {
-//        zxing.toggleFlash();
+        if (mTorchOn) {
+            closeFlash()
+        } else {
+            openFlash()
+        }
+    }
+
+    override fun onTorchOff() {
+        mTorchOn = false
+    }
+
+    override fun onTorchOn() {
+        mTorchOn = true
     }
 }
