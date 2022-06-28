@@ -148,12 +148,24 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
         
     }
     func openFlash(){
-        //        scanner?.setTorchMode(MTBTorchMode.on)
+        do{
+            try scanner?.setTorchMode(MTBTorchMode.on, error: ())
+            
+            self.flutterResult?(true);
+        }catch{
+            self.flutterResult?(false);
+        }
     }
     func closeFlash(){
-        //        scanner?.setTorchMode(MTBTorchMode.off)
+        do{
+            try scanner?.setTorchMode(MTBTorchMode.off, error: ())
+            self.flutterResult?(true);
+        }catch{
+            self.flutterResult?(false);
+        }
     }
     func toggleFlash(){
         scanner?.toggleTorch();
+        self.flutterResult?(true);
     }
 }

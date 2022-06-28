@@ -61,11 +61,17 @@ class _AppBarcodeState extends State<AppBarcodeScannerWidget> {
   }
 
   void _requestMobilePermission() async {
-    if (await Permission.camera.request().isGranted) {
-      setState(() {
-        _isGranted = true;
-      });
+    bool isGrated = true;
+    if (await Permission.camera.status.isGranted) {
+      isGrated = true;
+    } else {
+      if (await Permission.camera.request().isGranted) {
+        isGrated = true;
+      }
     }
+    setState(() {
+      _isGranted = isGrated;
+    });
   }
 
   @override
