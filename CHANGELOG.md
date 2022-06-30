@@ -1,3 +1,8 @@
+## [3.2.4]
+
+* fix web platform something
+* improve web platform something
+
 ## [3.2.3]
 
 * fix ios platform something
