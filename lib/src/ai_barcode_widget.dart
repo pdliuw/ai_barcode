@@ -69,8 +69,8 @@ class _PlatformScannerWidgetState
   /// Web result callback
   void _webResultCallback(String result) {
     if (widget._platformScannerController._scannerResult != null) {
-    //callback
-    widget._platformScannerController._scannerResult(result);
+      //callback
+      widget._platformScannerController._scannerResult(result);
     }
   }
 
