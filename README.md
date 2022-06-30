@@ -179,7 +179,7 @@ iOS支持PlatformView配置：
 
 完整示例
 
-[完整示例,点击这里](https://github.com/pdliuw/ai_barcode/blob/master/example/lib/task_scanner_page.dart)
+[完整示例,点击这里](https://github.com/pdliuw/ai_barcode/blob/master/example/lib/main.dart)
 
 
 ### 2.调用/应用
