@@ -121,12 +121,10 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
                     try self.scanner.startScanning(resultBlock: { codes in
                         if let codes = codes {
                             for code in codes {
-                                let stringValue = code.stringValue!
-                                if(self.flutterResult != nil){
-                                    self.flutterResult?("\(stringValue)");
-                                }
-                                
-                                print("Found code: \(stringValue)")
+                                if let stringValue = code.stringValue, self.flutterResult != nil {
+                                     self.flutterResult?("\(stringValue)");
+                                     print("Found code: \(stringValue)")
+                                 }
                             }
                         }
                     })
