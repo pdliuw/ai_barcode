@@ -1,3 +1,7 @@
+## [3.2.6]
+
+* remove prevent duplicate scans
+
 ## [3.2.5]
 
 * adapter flutter v3.7.12

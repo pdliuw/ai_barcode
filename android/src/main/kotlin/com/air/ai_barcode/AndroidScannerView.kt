@@ -43,12 +43,12 @@ class AndroidScannerView(
         if (result == null) {
             return;
         }
-        if (result.text == null || result.text == mLastText) {
-            // Prevent duplicate scans
-            return
-        }
-
-        mLastText = result.text
+//        if (result.text == null || result.text == mLastText) {
+//            // Prevent duplicate scans
+//            return
+//        }
+//
+//        mLastText = result.text
 
         this.mEventChannelSink?.success(result.text.toString());
     }
