@@ -111,18 +111,24 @@ class AndroidScannerView(
 
         val formats: Collection<BarcodeFormat> =
             listOf(
-                BarcodeFormat.UPC_A,
-                BarcodeFormat.UPC_E,
-                BarcodeFormat.EAN_8,
-                BarcodeFormat.EAN_13,
-                BarcodeFormat.RSS_14,
+                BarcodeFormat.AZTEC,
+                BarcodeFormat.CODABAR,
                 BarcodeFormat.CODE_39,
                 BarcodeFormat.CODE_93,
                 BarcodeFormat.CODE_128,
+                BarcodeFormat.DATA_MATRIX,
+                BarcodeFormat.EAN_8,
+                BarcodeFormat.EAN_13,
                 BarcodeFormat.ITF,
-                BarcodeFormat.RSS_EXPANDED,
+                BarcodeFormat.MAXICODE,
+                BarcodeFormat.PDF_417,
                 BarcodeFormat.QR_CODE,
-                BarcodeFormat.CODABAR,
+                BarcodeFormat.RSS_14,
+                BarcodeFormat.RSS_EXPANDED,
+                BarcodeFormat.UPC_A,
+                BarcodeFormat.UPC_E,
+                BarcodeFormat.UPC_EAN_EXTENSION,
+
             )
         mZXingBarcode.barcodeView.decoderFactory = DefaultDecoderFactory(formats)
         mZXingBarcode.setStatusText("")

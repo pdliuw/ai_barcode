@@ -66,9 +66,7 @@ class _CreatorState extends State<CreatorPage> {
                 ),
               ],
             ),
-            RaisedButton.icon(
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
+            ElevatedButton.icon(
               onPressed: () {
                 setState(() {
                   //update value

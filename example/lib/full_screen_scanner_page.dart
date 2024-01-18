@@ -9,25 +9,58 @@ class FullScreenScannerPage extends StatefulWidget {
 }
 
 class _FullScreenScannerPageState extends State<FullScreenScannerPage> {
-  String _code = '';
+  ValueNotifier<String> _codeNotifier = ValueNotifier("");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("$_code"),
+        title: Text(""),
       ),
-      body: Column(
+      body: Stack(
         children: [
-          Expanded(
+          Positioned.fill(
             child: AppBarcodeScannerWidget.defaultStyle(
               resultCallback: (String code) {
-                setState(() {
-                  _code = code;
-                });
+                _codeNotifier.value = code;
               },
               openManual: false,
             ),
+          ),
+          Positioned(
+            child: Card(
+              color: Colors.amber.shade200,
+              elevation: 4,
+              child: ExpansionTile(
+                childrenPadding:
+                    const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                expandedCrossAxisAlignment: CrossAxisAlignment.end,
+                maintainState: true,
+                title: ValueListenableBuilder<String>(
+                  valueListenable: _codeNotifier,
+                  builder: (context, data, child) {
+                    return Text(
+                      "$data",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    );
+                  },
+                ),
+                // contents
+                children: [
+                  ValueListenableBuilder<String>(
+                    valueListenable: _codeNotifier,
+                    builder: (context, data, child) {
+                      return Text("$data");
+                    },
+                  ),
+                  // This button is used to remove this item
+                ],
+              ),
+            ),
+            left: 0,
+            top: 0,
+            right: 0,
           ),
         ],
       ),

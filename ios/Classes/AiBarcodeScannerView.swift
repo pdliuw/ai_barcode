@@ -115,10 +115,11 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
         if(self.scanner.isScanning()){
             return;
         }
-        MTBBarcodeScanner.requestCameraPermission(success: { success in
+        MTBBarcodeScanner.requestCameraPermission(success: { [weak self] success in
+            guard let self = self else { return }
             if success {
                 do {
-                    try self.scanner.startScanning(resultBlock: { codes in
+                    try self.scanner.startScanning(with: MTBCamera.back, resultBlock: { codes in
                         if let codes = codes {
                             for code in codes {
                                 let stringValue = code.stringValue!

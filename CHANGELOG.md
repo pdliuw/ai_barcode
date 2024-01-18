@@ -1,3 +1,7 @@
+## [3.2.5]
+
+* adapter flutter v3.7.12
+
 ## [3.2.4]
 
 * fix web platform something
