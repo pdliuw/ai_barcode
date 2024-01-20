@@ -106,12 +106,6 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
     
     
     func startCamera(){
-        
-    }
-    func stopCamera(){
-        //        self.scanner?.stopScanning()
-    }
-    func resumeCameraPreview(){
         if(self.scanner.isScanning()){
             return;
         }
@@ -140,10 +134,22 @@ class AiBarcodeScannerView:NSObject,FlutterPlatformView{
             }
         })
     }
+    func stopCamera(){
+        if(self.scanner.isScanning()){
+            self.scanner.stopScanning()
+            
+        }
+    }
+    func resumeCameraPreview(){
+        if(!self.scanner.isScanning()){
+            self.scanner.unfreezeCapture()
+            
+        }
+    }
     
     func stopCameraPreview(){
         if(self.scanner.isScanning()){
-            self.scanner.stopScanning()
+            self.scanner.freezeCapture()
             
         }
         

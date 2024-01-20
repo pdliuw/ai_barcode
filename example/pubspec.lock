@@ -15,7 +15,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "3.2.5"
+    version: "3.2.7"
   ai_barcode_platform_interface:
     dependency: transitive
     description:

@@ -1,3 +1,7 @@
+## [3.2.7]
+
+* model rule of professional conduct
+
 ## [3.2.6]
 
 * remove prevent duplicate scans
