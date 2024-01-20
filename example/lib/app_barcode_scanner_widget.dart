@@ -197,12 +197,13 @@ class _BarcodeScannerWidget extends StatefulWidget {
   }
 }
 
-class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
+class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> with WidgetsBindingObserver{
   late ScannerController _scannerController;
 
   @override
   void initState() {
     super.initState();
+    WidgetsBinding.instance.addObserver(this);
 
     _scannerController = ScannerController(scannerResult: (result) {
       _resultCallback(result);
@@ -220,9 +221,44 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> {
     });
   }
 
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    super.didChangeAppLifecycleState(state);
+
+    switch(state){
+
+      case AppLifecycleState.resumed:
+        TargetPlatform platform = Theme.of(context).platform;
+        if (TargetPlatform.iOS == platform) {
+          Future.delayed(Duration(seconds: 1), () {
+            _scannerController.startCamera();
+            _scannerController.startCameraPreview();
+
+          });
+        } else {
+          _scannerController.startCamera();
+          _scannerController.startCameraPreview();
+
+        }
+        break;
+      case AppLifecycleState.inactive:
+
+        break;
+      case AppLifecycleState.paused:
+        _scannerController.stopCameraPreview();
+        _scannerController.stopCamera();
+        break;
+      case AppLifecycleState.detached:
+
+        break;
+    }
+  }
+
   @override
   void dispose() {
     super.dispose();
+    WidgetsBinding.instance.removeObserver(this);
 
     _scannerController.stopCameraPreview();
     _scannerController.stopCamera();
