@@ -278,12 +278,27 @@ class _AppBarcodeScannerWidgetState extends State<_BarcodeScannerWidget> with Wi
                 onPressed: () {
                   _scannerController.openFlash();
                 },
-                child: Text("Open")),
+                child: Text("Open Flash")),
             ElevatedButton(
                 onPressed: () {
                   _scannerController.closeFlash();
                 },
-                child: Text("Close")),
+                child: Text("Close Flash")),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  _scannerController.startCameraPreview();
+                },
+                child: Text("Start Camera Preview")),
+            ElevatedButton(
+                onPressed: () {
+                  _scannerController.stopCameraPreview();
+                },
+                child: Text("Stop Camera Preview")),
           ],
         ),
       ],
